@@ -399,7 +399,8 @@ file = 'account.html';
 	req.on('end',() => {
 		pdata = qs.parse(pdata);
 		var stringURL = String(pdata['email']);
-		
+		stringURL = decodeURIComponent(stringURL)
+
 		//store user's favorite foods into array
 		var faves = [];
 		MongoClient.connect(urll,{useUnifiedTopology:true},function(err,db){
@@ -409,7 +410,8 @@ file = 'account.html';
 			
 			var dbo = db.db("users");
 			var coll = dbo.collection("profiles");
-			var myquery = {email:"annalisejacobson@gmail.com"};
+			stringurl = 
+			var myquery = {email: stringURL};
 			
 			coll.find(myquery).toArray(function(err,items){
 				if(err){
@@ -449,7 +451,7 @@ file = 'account.html';
 					for (i=0; i < items.length; i++) {
 					
 						//go through user's favorite foods and check if food in database = user favorite food
-						for (j=0; j<faves.length;i++) {
+						for (j=0; j<faves.length;j++) {
 							if (items[i].food == faves[j]) {
 								foodstr += ("<tr><td>" + items[i].food + "</td><td>" + items[i].meal  + "</td><td>" + items[i].hall 
 							  	+ "</td><td>" + items[i].longdate + "</td></tr>");
