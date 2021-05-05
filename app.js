@@ -290,10 +290,14 @@ app.post('/menu.html/process', function (req, res) {
   
 	req.on('end', () => {
 	pdata = qs.parse(pdata);
+	var mail;
 	var x = String(pdata['hidden']);
+	fs.readFile(file, function(err, txtt) {
+	      if(err) { return console.log(err); }
+	      mail = String(txtt["email"]);
+	    });
 	//calebs code to add foods the user chooses to their database 
 	//x is the string representing all the foods the user chose
-	var mail = "unnathy5109@gmail.com";
 	 uploaduserfood(x, mail);
 		
 		
