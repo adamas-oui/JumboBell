@@ -122,7 +122,7 @@ app.get('/menu.html/breakfast',function(req,res) {
 					  console.log("Error: " + err);
 				  } else {
 					  var bfast = "";
-					  bfast += ("<div class='foodlist' style='width:30%;'>");
+					  bfast += ("<div class='foodlist' style='width:30%; color:white;'>");
 					  bfast += ("<h1>Breakfast</h1>");
 					  bfast += ("<br><input type='submit' value='Add Selected Foods to Favorites'/><br><hr><br>");
 					  for (i=0; i<items.length; i++) {
