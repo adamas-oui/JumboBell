@@ -476,6 +476,7 @@ file = 'account.html';
 					foodstr += ("<h1>My Favorites</h1>");
 					foodstr += ("<table style = color:white;>");
 					foodstr += ("<tr> <th>Food</th> <th>Meal</th> <th>Dining Hall</th> <th>Date</th> </tr>");
+					emailstring = "current users favorite foods: \n";
 					//go through entire database of foods
 					for (i=0; i < items.length; i++) {
 					
@@ -485,13 +486,16 @@ file = 'account.html';
 								foodstr += ("<tr><td>" + items[i].food + "</td><td>" + items[i].meal  + "</td><td>" + items[i].hall 
 							  	+ "</td><td>" + items[i].longdate + "</td></tr>");
 								break;
+								
+							    emailstring += items[i].food + " is being served at " + items[i].hall + " on " + items[i].longdate + " for " + items[i].meal + "\n";
+
 							}
 						}
 						
 					}
 					foodstr += ("</table>");
 					res.write(foodstr);
-					sendmail(foodstr);
+					sendmail(emailstring);
 				}
 			});
 			setTimeout(function(){ db.close(); console.log("Success!");}, 1000);
