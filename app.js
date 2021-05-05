@@ -367,7 +367,7 @@ app.get('/account.html',function(req,res) {
      	res.writeHead(200, {'Content-Type': 'text/html'});
      	res.write(txt);
 	res.write("<style>#signinform{visibility:hidden;}</style>");
-	res.write("My Favorites: ");
+	res.write("<br> My Favorites: ");
 		//display user database favorite foods data
      	setTimeout(function(){res.end();}, 2000);
    });
