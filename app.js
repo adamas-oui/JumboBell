@@ -112,7 +112,9 @@ app.get('/menu.html/breakfast',function(req,res) {
 			  res.write("<br>");
 			  res.write("<br>");
 			  
-			  res.write("<input type = 'text' id = 'email' value = 'BLANK' name = 'foodname'/> " );
+			  var emailform = "<input type = 'text' id = 'email' value = " + stringURL + "name = 'foodname'/> "
+
+			  res.write(emailform);
 
 			  var bfastarr = [];
 			  coll.find({meal:"breakfast"}).toArray(function(err,items) {
