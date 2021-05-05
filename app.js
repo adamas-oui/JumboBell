@@ -89,14 +89,14 @@ app.get('/menu.html/breakfast',function(req,res) {
 	      if(err) { return console.log(err); }
 	      res.writeHead(200, {'Content-Type': 'text/html'});
 		
-		res.write("whole URL: " + req.url);
+		//res.write("whole URL: " + req.url);
 		//res.write(" SHOUld get actual thing: ")
-		//var stringURL = req.url.toString()
+		var stringURL = req.url.toString()
 		//res.write(stringURL );
 	
-		//stringURL = stringURL.split("=");
-		//stringURL = stringURL[1];
-		//res.write(stringURL );
+		stringURL = stringURL.split("=");
+		stringURL = stringURL[1];
+		res.write("User email: " + stringURL );
 
 	      res.write(txt);	  
 	  
