@@ -361,12 +361,11 @@ app.get('/menu.html', function (req, res) {
 });
 
 app.get('/account.html',function(req,res) {
-	file = 'index.html';
+	file = 'account.html';
 	fs.readFile(file, function(err, txt) {
      	if(err) { return console.log(err); }
      	res.writeHead(200, {'Content-Type': 'text/html'});
      	res.write(txt);
-	res.write("<style>#signinform{visibility:hidden;}</style>");
 	res.write("<br> My Favorites: ");
 		//display user database favorite foods data
      	setTimeout(function(){res.end();}, 2000);
