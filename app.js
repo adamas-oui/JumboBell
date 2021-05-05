@@ -22,16 +22,7 @@ app.get('/', function (req, res, next) {
       setTimeout(function(){res.end();}, 2000);
     });
 });
-app.get('/index.html', function (req, res, next) {
-  file = 'index.html';
-  fs.readFile(file, function(err, txt) {
-      if(err) { return console.log(err); }
-      res.writeHead(200, {'Content-Type': 'text/html'});
-      res.write(txt);
-      setTimeout(function(){res.end();}, 2000);
-    });
-});
-app.get('/index.html/process', function (req, res, next) {
+app.get('/process', function (req, res, next) {
 	console.log("Process the form");
 	pdata = "";
 	req.on('data', data => {
