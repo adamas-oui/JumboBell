@@ -388,25 +388,17 @@ app.get('/account.html',function(req,res) {
 
 // code to get all of current users favorite foods being served 
 app.get('/account.html/process', function (req, res) {
-	res.writeHead(200, {'Content-Type':'text/html'});
+	pdata = "";
+	req.on('data', data => {
+           pdata += data.toString();
+    });	 
+	req.on('end',() => {
+	pdata = qs.parse(pdata);
+	var email2;
+	var stringURL = String(pdata['email']);
+	getusersfoods(stringURL);
+	});
 	
-	var stringURL = req.url.toString();
-	res.write(stringURL );
-	stringURL = stringURL.split("=");
-	
-	//stringURL = stringURL.split('; email=');
-
-         stringURL = stringURL[1];
-	
-	stringURL  = (decodeURIComponent(stringURL));
-
-	res.write("user email: " + stringURL );
-	
-	//res.write("<br>");
-
-	//code to email and display stuff 
-	
-	  getusersfoods(stringURL);
   //console.log("returned user food arr" + userfoodarr);
 
 
