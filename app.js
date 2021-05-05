@@ -386,16 +386,7 @@ app.get('/account.html',function(req,res) {
 
 // code to get all of current users favorite foods being served 
 app.get('/account.html/process', function (req, res) {
-file = 'account.html';
-  fs.readFile(file, function(err, txt) {
-      if(err) { return console.log(err); }
-      res.writeHead(200, {'Content-Type': 'text/html'});
-      res.write(txt);
-    });
-	pdata = "";
-	req.on('data', data => {
-           pdata += data.toString();
-		
+	
 	console.log(req.url);
 	console.log(" SHOUld get actual thing: ")
 	var stringURL2 = req.url.toString()
@@ -404,6 +395,19 @@ file = 'account.html';
 	stringURL2 = stringURL2.split("=");
 	stringURL2 = stringURL2[1];
 	console.log(stringURL2 );
+
+file = 'account.html';
+  fs.readFile(file, function(err, txt) {
+      if(err) { return console.log(err); }
+      res.writeHead(200, {'Content-Type': 'text/html'});
+	  
+	  
+      res.write(txt);
+    });
+	pdata = "";
+	req.on('data', data => {
+           pdata += data.toString();
+		
 
     });	 
 	req.on('end',() => {
