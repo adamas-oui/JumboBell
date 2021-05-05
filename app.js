@@ -409,7 +409,7 @@ file = 'account.html';
 			
 			var dbo = db.db("users");
 			var coll = dbo.collection("profiles");
-			var myquery = {email:"annalisejacobson@gmail.com"};
+			var myquery = {email:"annalisejacobson%40gmail.com"};
 			
 			coll.find(myquery).toArray(function(err,itmes){
 				if(err){
