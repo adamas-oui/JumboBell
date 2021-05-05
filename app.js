@@ -83,14 +83,14 @@ app.get('/home.html', function (req, res) {
 
 app.get('/menu.html/breakfast',function(req,res) {
 	
-	res.write(req.url);
-	res.write(" SHOUld get actual thing: ")
-	var stringURL = req.url.toString()
-	res.write(stringURL );
+	res.write("whole URL: " + req.url);
+	//res.write(" SHOUld get actual thing: ")
+	//var stringURL = req.url.toString()
+	//res.write(stringURL );
 	
-	stringURL = stringURL.split("=");
-	stringURL = stringURL[1];
-	res.write(stringURL );
+	//stringURL = stringURL.split("=");
+	//stringURL = stringURL[1];
+	//res.write(stringURL );
 
 	
 	file = 'my_choice.html';
