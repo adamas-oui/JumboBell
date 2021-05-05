@@ -395,7 +395,7 @@ file = 'account.html';
 		}
 		var dbo = db.db("users");
 		var coll = dbo.collection("profiles");
-		var myquery = {email:username};
+		var myquery = {email:stringURL};
 		coll.find(myquery).toArray(function(err,itmes){
 			if(err){
 				console.log("Error: "+err);
