@@ -385,7 +385,7 @@ app.get('/my_choice.html/finduserfoods', function (req, res) {
 	
 	var stringURL = req.url.toString();
 	res.write(stringURL );
-	///stringURL = stringURL.split("=");
+	stringURL = stringURL.split("=");
 	
 	//stringURL = stringURL.split('; email=');
 
@@ -393,7 +393,7 @@ app.get('/my_choice.html/finduserfoods', function (req, res) {
 	
 	//stringURL  = (decodeURIComponent(stringURL));
 
-	//res.write("user email: " + stringURL );
+	res.write("user email: " + stringURL );
 	
 	//res.write("<br>");
 
