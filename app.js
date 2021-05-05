@@ -400,7 +400,7 @@ file = 'account.html';
     });	 
 	req.on('end',() => {
 		pdata = qs.parse(pdata);
-		var stringURL = String(pdata['email']);
+		var stringURL = String(pdata['email']).split(';')[0];
 		
 		//store user's favorite foods into array
 		var faves = [];
@@ -414,7 +414,7 @@ file = 'account.html';
 			
 			
 			
-			coll.find(myquery).toArray(function(err,itmes){
+			coll.find(myquery).toArray(function(err,items){
 				if(err){
 					console.log("Error: "+err);
 					console.log("<br>");
