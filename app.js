@@ -339,7 +339,7 @@ app.post('/menu.html/process', function (req, res) {
             var coll = dbo.collection('profiles');
                             
             console.log(foodstring);                        
-            var myquery = { email: cpekowsky@gmail.com };
+            var myquery = { email: "cpekowsky@gmail.com" };
             var newvalues = {  $addToSet: { foods: { $each: foodstring } } };
                 
             coll.updateOne(myquery, newvalues, function(err, res) {
