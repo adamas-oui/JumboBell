@@ -22,6 +22,15 @@ app.get('/', function (req, res, next) {
       setTimeout(function(){res.end();}, 2000);
     });
 });
+app.get('/home.html', function (req, res, next) {
+  file = 'home.html';
+  fs.readFile(file, function(err, txt) {
+      if(err) { return console.log(err); }
+      res.writeHead(200, {'Content-Type': 'text/html'});
+      res.write(txt);
+      setTimeout(function(){res.end();}, 2000);
+    });
+});
 app.get('/process', function (req, res, next) {
 	 file = 'home.html';
 	  fs.readFile(file, function(err, txt) {
