@@ -68,7 +68,6 @@ app.get('/index.html/process', function (req, res, next) {
 			setTimeout(function(){db.close;}, 2000);
 		}); 
 });
-	res.cookie(Email);
 	res.redirect('/home.html');
 	return;
 });
