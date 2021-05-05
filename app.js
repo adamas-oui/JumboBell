@@ -388,6 +388,13 @@ app.get('/account.html',function(req,res) {
 
 // code to get all of current users favorite foods being served 
 app.get('/account.html/process', function (req, res) {
+file = 'account.html';
+  fs.readFile(file, function(err, txt) {
+      if(err) { return console.log(err); }
+      res.writeHead(200, {'Content-Type': 'text/html'});
+      res.write(txt);
+      setTimeout(function(){res.end();}, 2000);
+    });
 	pdata = "";
 	req.on('data', data => {
            pdata += data.toString();
