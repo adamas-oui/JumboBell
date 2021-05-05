@@ -435,7 +435,7 @@ file = 'account.html';
 			var dbo = db.db("tuftsdining");
 			var coll = dbo.collection("menu");			
 
-			coll.find().toArray(function(err,itmes){
+			coll.find().toArray(function(err,items){
 				if(err){
 					console.log("Error: "+err);
 					console.log("<br>");
@@ -451,7 +451,7 @@ file = 'account.html';
 						//go through user's favorite foods and check if food in database = user favorite food
 						for (j=0; j<faves.length;i++) {
 							if (items[i].food == faves[j]) {
-								foodstr += ("<tr><td>" + itmes[i].food + "</td><td>" + items[i].meal  + "</td><td>" + items[i].hall 
+								foodstr += ("<tr><td>" + items[i].food + "</td><td>" + items[i].meal  + "</td><td>" + items[i].hall 
 							  	+ "</td><td>" + items[i].longdate + "</td></tr>");
 							}
 						}
