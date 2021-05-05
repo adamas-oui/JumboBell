@@ -31,14 +31,7 @@ app.get('/index.html', function (req, res, next) {
       setTimeout(function(){res.end();}, 2000);
     });
 });
-app.get('/process', function (req, res, next) {
-	file = 'home.html';
-	  fs.readFile(file, function(err, txt) {
-	      if(err) { return console.log(err); }
-	      res.writeHead(200, {'Content-Type': 'text/html'});
-	      res.write(txt);
-	      setTimeout(function(){res.end();}, 2000);
-	    });
+app.get('/index.html/process', function (req, res, next) {
 	console.log("Process the form");
 	pdata = "";
 	req.on('data', data => {
@@ -75,6 +68,8 @@ app.get('/process', function (req, res, next) {
 			setTimeout(function(){db.close;}, 2000);
 		}); 
 });
+	res.redirect('/home.html');
+	return;
 });
 app.get('/home.html', function (req, res) {
   file = 'home.html';
@@ -314,8 +309,6 @@ app.post('/menu.html/process', function (req, res) {
 	//calebs code to add foods the user chooses to their database 
 	//x is the string representing all the foods the user chose
 	 uploaduserfood(x, mail);
-		
-		
 	 function uploaduserfood(foodstring, useremail) { 
             
         foodstring = foodstring.split(",")  
@@ -405,7 +398,7 @@ file = 'account.html';
     });	 
 	req.on('end',() => {
 		pdata = qs.parse(pdata);
-		var stringURL = String(pdata['email']).split(';')[0];
+		var stringURL = String(pdata['email']);
 		
 		//store user's favorite foods into array
 		var faves = [];
@@ -415,11 +408,9 @@ file = 'account.html';
 			}
 			var dbo = db.db("users");
 			var coll = dbo.collection("profiles");
-			var myquery = {email:stringURL};
+			var myquery = {email:username};
 			
-			
-			
-			coll.find(myquery).toArray(function(err,items){
+			coll.find(myquery).toArray(function(err,itmes){
 				if(err){
 					console.log("Error: "+err);
 					console.log("<br>");
@@ -442,7 +433,7 @@ file = 'account.html';
 			var dbo = db.db("tuftsdining");
 			var coll = dbo.collection("menu");			
 
-			coll.find({}).toArray(function(err,items){
+			coll.find().toArray(function(err,itmes){
 				if(err){
 					console.log("Error: "+err);
 					console.log("<br>");
@@ -458,7 +449,7 @@ file = 'account.html';
 						//go through user's favorite foods and check if food in database = user favorite food
 						for (j=0; j<faves.length;i++) {
 							if (items[i].food == faves[j]) {
-								foodstr += ("<tr><td>" + items[i].food + "</td><td>" + items[i].meal  + "</td><td>" + items[i].hall 
+								foodstr += ("<tr><td>" + itmes[i].food + "</td><td>" + items[i].meal  + "</td><td>" + items[i].hall 
 							  	+ "</td><td>" + items[i].longdate + "</td></tr>");
 							}
 						}
