@@ -83,20 +83,21 @@ app.get('/home.html', function (req, res) {
 
 app.get('/menu.html/breakfast',function(req,res) {
 	
-	res.write("whole URL: " + req.url);
-	//res.write(" SHOUld get actual thing: ")
-	//var stringURL = req.url.toString()
-	//res.write(stringURL );
-	
-	//stringURL = stringURL.split("=");
-	//stringURL = stringURL[1];
-	//res.write(stringURL );
-
 	
 	file = 'my_choice.html';
 	fs.readFile(file, function(err, txt) {
 	      if(err) { return console.log(err); }
 	      res.writeHead(200, {'Content-Type': 'text/html'});
+		
+		res.write("whole URL: " + req.url);
+		//res.write(" SHOUld get actual thing: ")
+		//var stringURL = req.url.toString()
+		//res.write(stringURL );
+	
+		//stringURL = stringURL.split("=");
+		//stringURL = stringURL[1];
+		//res.write(stringURL );
+
 	      res.write(txt);	  
 	  
 		  MongoClient.connect(url2,{useUnifiedTopology:true},function(err, db) {
