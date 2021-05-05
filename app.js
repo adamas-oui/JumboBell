@@ -31,7 +31,7 @@ app.get('/index.html', function (req, res, next) {
       setTimeout(function(){res.end();}, 2000);
     });
 });
-app.get('/index.html/process', function (req, res, next) {
+app.get('/home.html', function (req, res, next) {
 	console.log("Process the form");
 	pdata = "";
 	req.on('data', data => {
@@ -68,17 +68,6 @@ app.get('/index.html/process', function (req, res, next) {
 			setTimeout(function(){db.close;}, 2000);
 		}); 
 });
-	res.redirect('/home.html');
-	return;
-});
-app.get('/home.html', function (req, res) {
-  file = 'home.html';
-  fs.readFile(file, function(err, txt) {
-      if(err) { return console.log(err); }
-      res.writeHead(200, {'Content-Type': 'text/html'});
-      res.write(txt);
-      setTimeout(function(){res.end();}, 2000);
-    });
 });
 
 app.get('/menu.html/breakfast',function(req,res) {
