@@ -72,22 +72,7 @@
 </script>
 
     <script>
-      function onSignIn(googleUser) {
-        var profile = googleUser.getBasicProfile();
-        console.log("ID: " + profile.getId()); 
-        document.getElementById('fullname').value = profile.getName();
-	document.getElementById('email').value = profile.getEmail();
-	      
-	      
-        var id_token = googleUser.getAuthResponse().id_token;
-        console.log("ID Token: " + id_token);
-	      
-	      
-      
-};
-//calebs code adding cookies: 
-	      
-        function setCookie() {
+	  function setCookie() {
                
               // var name_email = name + "#email#" + email;
 		
@@ -102,6 +87,22 @@
 		//return true;
 		
            };
+      function onSignIn(googleUser) {
+        var profile = googleUser.getBasicProfile();
+        console.log("ID: " + profile.getId()); 
+        document.getElementById('fullname').value = profile.getName();
+	document.getElementById('email').value = profile.getEmail();
+	var email = document.getElementById('email').value;
+	document.cookie = "email=" + email;    
+	      
+        var id_token = googleUser.getAuthResponse().id_token;
+        console.log("ID Token: " + id_token);
+	      
+	      
+      
+};
+//calebs code adding cookies: 
+	      
 	  
 </script>
 	
