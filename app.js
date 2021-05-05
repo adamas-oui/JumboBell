@@ -386,17 +386,17 @@ app.get('/my_choice.html/finduserfoods', function (req, res) {
 	var stringURL = req.url.toString()
 	//res.write(stringURL );
 	
-	//stringURL = stringURL.split("=");
+	/stringURL = stringURL.split("=");
 	
 	//stringURL = stringURL.split('; email=');
 
-       //  stringURL = stringURL[1];
+         stringURL = stringURL[1];
 	
 	//stringURL  = (decodeURIComponent(stringURL));
 
-	//res.write("user email: " + stringURL );
+	res.write("user email: " + stringURL );
 	
-	//res.write("<br>");
+	res.write("<br>");
 
 	//code to email and display stuff 
 	
