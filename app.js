@@ -96,7 +96,6 @@ app.get('/menu.html/breakfast',function(req,res) {
 			var coll = dbo.collection("menu3");
 
 			  res.write("<form method='post' action='https://jumbo-bell.herokuapp.com/menu.html/process' >");
-			  res.write("<br><input type='submit' value='Add Selected Food to Favorites'/>");
 			  
 			  res.write("<br>");
 			  res.write("<br>");
@@ -111,6 +110,7 @@ app.get('/menu.html/breakfast',function(req,res) {
 					  var bfast = "";
 					  bfast += ("<div id='bfast' style='width:30%;'>");
 					  bfast += ("<h1>Breakfast</h1>");
+					  bfast += ("<br><input type='submit' value='Add Selected Food to Favorites'/>");
 					  for (i=0; i<items.length; i++) {
 						  //check if repeated value
 						  var repeatedvalue = false;
@@ -166,7 +166,6 @@ app.get('/menu.html/lunch',function (req,res) {
 			var coll = dbo.collection("menu3");
 
 			  res.write("<form method='post' action='https://jumbo-bell.herokuapp.com/menu.html/process' onsubmit = 'getFormData()'>");
-			  res.write("<br><input type='submit' value='Add Selected Food to Favorites'/>");
 			  var luncharr = [];
 			  coll.find({meal:"Lunch"}).toArray(function(err,items) {
 				  if(err) {
@@ -175,6 +174,7 @@ app.get('/menu.html/lunch',function (req,res) {
 					  var lunch = "";
 					  lunch += ("<div id='lunch' style='width:30%;'>");
 					  lunch += ("<h1>Lunch</h1>");
+					  lunch += ("<br><input type='submit' value='Add Selected Food to Favorites'/>");
 					  for (i=0; i<items.length; i++) {
 						  //check if repeated value
 						  var repeatedvalue = false;
@@ -228,7 +228,6 @@ app.get('/menu.html/dinner',function (req,res) {
 			var coll = dbo.collection("menu3");
 
 			  res.write("<form method='post' action='https://jumbo-bell.herokuapp.com/menu.html/process' onsubmit = 'getFormData()'>");
-			  res.write("<br><input type='submit' value='Add Selected Food to Favorites'/>");
 			  var dinnerarr = [];
 			  coll.find({meal:"Dinner"}).toArray(function(err,items) {
 				  if(err) {
@@ -237,6 +236,7 @@ app.get('/menu.html/dinner',function (req,res) {
 					  var dinner = "";
 					  dinner += ("<div id='dinner' style='width:30%;'>");
 					  dinner += ("<h1>Dinner</h1>");
+					  dinner += ("<br><input type='submit' value='Add Selected Food to Favorites'/>");
 					  for (i=0; i<items.length; i++) {
 						  //check if repeated value
 						  var repeatedvalue = false;
