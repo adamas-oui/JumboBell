@@ -97,6 +97,11 @@ app.get('/menu.html/breakfast',function(req,res) {
 
 			  res.write("<form method='post' action='https://jumbo-bell.herokuapp.com/menu.html/process' >");
 			  res.write("<br><input type='submit' value='Add Selected Food to Favorites'/>");
+			  
+			  res.write("<br>");
+			  res.write("<br>");
+			  
+			  res.write("<input type = 'text' id = 'email' value = 'BLANK' name = 'foodname'/> " );
 
 			  var bfastarr = [];
 			  coll.find({meal:"breakfast"}).toArray(function(err,items) {
