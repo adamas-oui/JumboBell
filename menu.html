@@ -10,9 +10,14 @@
         background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
         url("https://images.unsplash.com/photo-1466978913421-dad2ebd01d17?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2534&q=80");
       }  
-      .animation {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+.animation {
+	position:relative;
+  	display: grid;
+  	grid-template-columns: 1fr 1fr 1fr;
+	margin:50px;
+	bottom:10px;
+	background-color:#e1e9f5;
+		  
 }
 
 .container1 {
@@ -20,6 +25,8 @@
   height: 300px;
   margin: 0px auto;
   position: relative;
+	bottom:60px;
+	
 }
 	    
 .container1:hover {
@@ -28,6 +35,20 @@
 
 .container1:hover .lid {
   top: 5px;
+}
+.container1:hover .mealhead {
+	transition: all .2s ease-in;
+	transform:translateY(-5px);
+	background-color:white;
+}
+.mealhead {
+	position:relative;
+	top:300px;
+	text-align:center;
+	Font-family: Lucida Bright, Georgia, serif;
+	color: #2f486e;
+	background-color:#c3cfe3;
+	border-radius:5px;
 }
 	 
 
@@ -328,9 +349,7 @@
   }
 }
 	    
-.mealhead {
-	position:absolute;
-}
+
 
     </style> 
   </head> 
@@ -355,7 +374,6 @@
   </nav>
     </div>
     
-    <main class="text-container px-3 mt-5" id="main">
       <br>
       <br>
       <div class="animation">
@@ -370,7 +388,6 @@
 	 <div class="container1">
           <div class="lid"></div>
           <div class="taco" onclick = "location.href='menu.html/lunch';"></div>
-	</button>
           <div class="plate"></div>
 		<div class="mealhead">Lunch</div>
         </div>
