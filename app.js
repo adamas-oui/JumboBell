@@ -399,16 +399,14 @@ app.get('/my_choice.html/finduserfoods', function (req, res) {
 
 	//code to email and display stuff 
 	
-	  getusersfoods("cpekowsky@gmail.com");
+	  getusersfoods(stringURL);
   //console.log("returned user food arr" + userfoodarr);
 
 
 
  function getusersfoods(useremail) {
     
-    
-    useremail = "cpekowsky@gmail.com";
-    
+        
     MongoClient.connect(userurl,{useUnifiedTopology:true},function(err, db ) {
         
         
