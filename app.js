@@ -295,6 +295,8 @@ app.post('/menu.html/process', function (req, res) {
 	//calebs code to add foods the user chooses to their database 
 	//x is the string representing all the foods the user chose
 	var mail = app.get("email");
+	res.write("mailhere ");
+	res.write(mail);
 	 uploaduserfood(x, mail);
 		
 		
