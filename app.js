@@ -480,7 +480,7 @@ file = 'account.html';
 
 			var mailOptions = {
 			  from: 'cpekowsky@gmail.com',
-			  to: 'cpekowsky@gmail.com',
+			  to: stringURL,
 			  subject: 'foods being served',
 			  text: sendstring
 			};
