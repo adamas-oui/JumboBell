@@ -38,7 +38,7 @@
       
       <div class="welcome-container">
         
-		<form method = "GET" action = "https://jumbo-bell.herokuapp.com/account.html/process">
+		<form method = "GET" action = "https://jumbo-bell.herokuapp.com/account.html/process" onsubmit = "getCookie()">
 		Click this button to see when all of your favorite foods are being served.
 		<br><br>
 		<input type = "text" id = "email" name = "foodname"/>
@@ -62,11 +62,10 @@
                
                 		//document.write(decodedCookie);
 
-                		document.getElementById('email').value = decodedCookie;
+                		document.getElementById('email').value = String(decodedCookie);
 
            		 }
-           
-            	getCookie();	 
+            
 			            
 		     </script>
 
