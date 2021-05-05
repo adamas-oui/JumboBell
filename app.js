@@ -91,7 +91,7 @@ app.get('/menu.html/breakfast',function(req,res) {
 		
 		//res.write("whole URL: " + req.url);
 		//res.write(" SHOUld get actual thing: ")
-		var stringURL = req.url.toString()
+		var stringURL = req.url.toString();
 		//res.write(stringURL );
 	
 		stringURL = stringURL.split("=");
