@@ -68,7 +68,7 @@ app.get('/index.html/process', function (req, res, next) {
 			setTimeout(function(){db.close;}, 2000);
 		}); 
 });
-	res.redirect('/index.html/process/home.html');
+	res.redirect('/home.html');
 	return;
 });
 app.get('/home.html', function (req, res) {
