@@ -286,7 +286,50 @@ app.post('/menu.html/process', function (req, res) {
 	req.on('end', () => {
 	pdata = qs.parse(pdata);
 	var x = String(pdata['hidden']);
-	res.write(x);
+	//calebs code to add foods the user chooses to their database 
+	//x is the string representing all the foods the user chose 
+	 uploaduserfood(x, "cpekowsky@gmail.com" );
+		
+		
+	 function uploaduserfood(foodstring, useremail) { 
+            
+        foodstring = foodstring.split(",")  
+        MongoClient.connect(userurl,{useUnifiedTopology:true},function(err, db ) {
+                        
+            
+            
+            if (err) {
+                console.log("Connection err: " + err);
+            }
+            var dbo = db.db("users");
+            var coll = dbo.collection('profiles');
+                            
+            console.log(foodstring);                        
+            var myquery = { email: useremail };
+            var newvalues = {  $addToSet: { foods: { $each: foodstring } } };
+                
+            coll.updateOne(myquery, newvalues, function(err, res) {
+                 if (err) throw err;
+                 console.log("user: " + useremail + " updated");
+                 });
+                
+                
+        //    }
+            
+            
+            
+
+        
+            
+            setTimeout(function(){ db.close(); console.log("Success!");}, 1000);
+        })
+
+        
+    }
+
+		
+		
+	//end calebs code to add foods the user chooses to their database
 	setTimeout(function(){res.end();}, 2000);
 
 	});  
