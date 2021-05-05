@@ -387,7 +387,7 @@ app.get('/account.html',function(req,res) {
 });
 
 // code to get all of current users favorite foods being served 
-app.get('/my_choice.html/finduserfoods', function (req, res) {
+app.get('/account.html/process', function (req, res) {
 	res.writeHead(200, {'Content-Type':'text/html'});
 	
 	var stringURL = req.url.toString();
