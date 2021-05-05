@@ -454,6 +454,7 @@ file = 'account.html';
 							if (items[i].food == faves[j]) {
 								foodstr += ("<tr><td>" + items[i].food + "</td><td>" + items[i].meal  + "</td><td>" + items[i].hall 
 							  	+ "</td><td>" + items[i].longdate + "</td></tr>");
+								break;
 							}
 						}
 						
