@@ -489,12 +489,16 @@ async function checkfoods(foodarr) {
                     
                 //    console.log(items);
                     var mystring =  "";
+		//mystring is formmatted for email, restring is formmatted for displaying on page
+		    var restring = "current users favorite food serving times: <br>";
                     for(i = 0; i < items.length; i++) {
                         //console.log( " served food: " + items[i].food + " is being served at " + items[i].hall + " on " + items[i].longdate + "\n" );
                         mystring+= items[i].food + " is being served at " + items[i].hall + " on " + items[i].longdate + " for " + items[i].meal + "\n";
+			restring += items[i].food + " is being served at " + items[i].hall + " on " + items[i].longdate + " for " + items[i].meal + "<br>";
+
                     }
                     
-                    sendmail(mystring);
+                    sendmail(mystring, restring);
 
                 }
                 
@@ -516,12 +520,12 @@ async function checkfoods(foodarr) {
 
 var nodemailer = require('nodemailer');
 
-function sendmail(sendstring) {
+function sendmail(sendstring, restring) {
     
     //                sendstring += (items[i].food + " is being served at " + items[i].hall + " on " + items[i].longdate + " \n") ;
 
 	//outputs string to page:
-	res.write(sendstring);
+	res.write(restring);
 
     var transporter = nodemailer.createTransport({
       service: 'gmail',
