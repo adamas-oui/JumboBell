@@ -410,7 +410,6 @@ file = 'account.html';
 			
 			var dbo = db.db("users");
 			var coll = dbo.collection("profiles");
-			stringurl = 
 			var myquery = {email: stringURL};
 			
 			coll.find(myquery).toArray(function(err,items){
