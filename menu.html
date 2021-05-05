@@ -382,7 +382,7 @@
 		
 		
 		 <form method = "GET" action = "https://jumbo-bell.herokuapp.com/menu.html/breakfast">
-		<input type = "text" id = "email" name = "foodname"/> <br>
+		<input type = "text" id = "email1" name = "foodname"/> <br>
 		          <div class="lid"></div>
 			       <div class="plate"></div>
 		<div class="mealhead">		<input type = "submit" value = " Breakfast "/>.   </div>
@@ -394,7 +394,7 @@
 	 <div class="container1">
 		 
 		 <form method = "GET" action = "https://jumbo-bell.herokuapp.com/menu.html/lunch">
-		<input type = "text" id = "email" name = "foodname"/> <br>
+		<input type = "text" id = "email2" name = "foodname"/> <br>
 		          <div class="lid"></div>
 			       <div class="plate"></div>
 		<div class="mealhead">		<input type = "submit" value = " Lunch "/>.   </div>
@@ -414,7 +414,7 @@
         <div class="container1">
 
 		 <form method = "GET" action = "https://jumbo-bell.herokuapp.com/menu.html/dinner">
-		<input type = "text" id = "email" name = "foodname"/> <br>
+		<input type = "text" id = "email3" name = "foodname"/> <br>
 		          <div class="lid"></div>
 			       <div class="plate"></div>
 		<div class="mealhead">		<input type = "submit" value = " Dinner "/>.   </div>
@@ -449,9 +449,9 @@
 		      
  		     function getCookie() {
                		 var decodedCookie = decodeURIComponent(document.cookie);               
-               		 document.write(decodedCookie);
+               		// document.write(decodedCookie);
 	
-              		  document.write("<br>");
+              		//  document.write("<br>");
 			     
  			 decodedCookie = decodedCookie.split('; email=');
 
@@ -459,7 +459,10 @@
                
                 		document.write(decodedCookie);
 
-                		document.getElementById('email').value = decodedCookie;
+                		document.getElementById('email1').value = decodedCookie;
+			        document.getElementById('email2').value = decodedCookie;
+                		document.getElementById('email3').value = decodedCookie;
+
            		 }
            
             	getCookie();	 
