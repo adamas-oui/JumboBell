@@ -428,11 +428,11 @@ file = 'account.html';
 				}
 				res.write("</table>");
 			}
-		}
+		});
 	
 	//getusersfoods(stringURL);
+		});
 	});
-	
   //console.log("returned user food arr" + userfoodarr);
 
 
