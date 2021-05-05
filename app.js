@@ -458,7 +458,7 @@ file = 'account.html';
 				} else {
 					var foodstr = "";
 					foodstr += ("<h1>My Favorites</h1>");
-					foodstr += ("<table>");
+					foodstr += ("<table style = color:white;>");
 					foodstr += ("<tr> <th>Food</th> <th>Meal</th> <th>Dining Hall</th> <th>Date</th> </tr>");
 					//go through entire database of foods
 					for (i=0; i < items.length; i++) {
