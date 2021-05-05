@@ -393,11 +393,19 @@
         </div>
 	      
         <div class="container1">
-          <div class="lid"></div>
-          <div class="pasta" onclick = "location.href='menu.html/dinner';"></div>
-          <div class="plate"></div>
-		<div class="mealhead">Dinner</div>
-	 </div>
+
+		 <form method = "GET" action = "https://jumbo-bell.herokuapp.com/menu.html/dinner">
+		Click this button to see when all of your favorite foods are being served.
+		<br><br>
+		<input type = "text" id = "email" name = "foodname"/>
+		<br><br>
+		<input type = "submit" value = "Submit"/>
+		</form> 
+
+		
+		
+		
+       
     
         
       </div>
@@ -405,6 +413,7 @@
 	    
 	    
        <div class="caleb">
+	       
         
         	<form method = "GET" action = "https://jumbo-bell.herokuapp.com/my_choice.html/finduserfoods">
 		Click this button to see when all of your favorite foods are being served.
@@ -412,10 +421,26 @@
 		<input type = "text" id = "email" name = "foodname"/>
 		<br><br>
 		<input type = "submit" value = "Submit"/>
-	</form> 
+		</form> 
 	  
 
 	       	  	      <script language = "javascript">
+			
+				      
+				      /*
+				      code for dinner 
+				      
+				              <div class="container1">
+          <div class="lid"></div>
+          <div class="pasta" onclick = "location.href='menu.html/dinner';"></div>
+          <div class="plate"></div>
+		<div class="mealhead">Dinner</div>
+	 </div>
+
+				      
+				      */
+				      
+				  
 		      //calebs code getting cookies
 		      
  		     function getCookie() {
