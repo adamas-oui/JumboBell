@@ -442,7 +442,7 @@ file = 'account.html';
 			var dbo = db.db("tuftsdining");
 			var coll = dbo.collection("menu");			
 
-			coll.find({}).toArray(function(err,itmes){
+			coll.find({}).toArray(function(err,items){
 				if(err){
 					console.log("Error: "+err);
 					console.log("<br>");
