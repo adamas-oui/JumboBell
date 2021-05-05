@@ -92,12 +92,11 @@ app.get('/menu.html/breakfast',function(req,res) {
 		//res.write("whole URL: " + req.url);
 		//res.write(" SHOUld get actual thing: ")
 		var stringURL = req.url.toString();
-		//res.write(stringURL );
 	
 		stringURL = stringURL.split("=");
 		stringURL = stringURL[1];
-		stringURL = stringURL.split(";");
-		stringURL = stringURL[0];
+		//stringURL = stringURL.split(";");
+		//stringURL = stringURL[0];
 		res.write("User email: " + stringURL );
 
 	      res.write(txt);	  
