@@ -398,7 +398,7 @@ file = 'account.html';
     });	 
 	req.on('end',() => {
 		pdata = qs.parse(pdata);
-		var username = String(pdata['email']);
+		var stringURL = String(pdata['email']);
 		
 		//store user's favorite foods into array
 		var faves = [];
@@ -423,6 +423,7 @@ file = 'account.html';
 					faves = items[0].foods;
 				}
 			});
+			setTimeout(function(){ db.close(); console.log("Success!");}, 1000);
 		});
 		
 		//print foods
@@ -460,6 +461,8 @@ file = 'account.html';
 					sendmail(foodstr);
 				}
 			});
+			setTimeout(function(){ db.close(); console.log("Success!");}, 1000);
+			setTimeout(function(){res.end();}, 2000);
 		});
 		var nodemailer = require('nodemailer');
 		function sendmail(sendstring) {
