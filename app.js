@@ -292,8 +292,8 @@ app.post('/menu.html/process', function (req, res) {
 	pdata = qs.parse(pdata);
 	var mail;
 	var x = String(pdata['hidden']);
-	reader = fs.readFile('index.html');
-	qdata = "";
+	reader = fs.createReadStream('index.html');
+	var qdata = "";
 	reader.on('data', function (chunk) {
 	    qdata += String(chunk);
 	});
