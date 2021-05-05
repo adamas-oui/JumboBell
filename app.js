@@ -40,7 +40,6 @@ app.get('/index.html/process', function (req, res, next) {
   req.on('end', () => {
 	pdata = qs.parse(pdata);
 	var Email = pdata["email"];
-	app.set("email",String(pdata['email']));
 	
 		MongoClient.connect(urll, { useUnifiedTopology: true }, function(err, db) {
 		console.log("hello");
