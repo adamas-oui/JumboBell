@@ -96,7 +96,8 @@ app.get('/menu.html/breakfast',function(req,res) {
 	
 		stringURL = stringURL.split("=");
 		stringURL = stringURL[1];
-		
+		stringURL = stringURL.split(";");
+		stringURL = stringURL[0];
 		res.write("User email: " + stringURL );
 
 	      res.write(txt);	  
@@ -318,9 +319,8 @@ app.post('/menu.html/process', function (req, res) {
   
 	req.on('end', () => {
 	pdata = qs.parse(pdata);
-	var mail = String(pdata['email']);
-	//var mail = decodeURIComponent(stringURL2)
-	console.log("testing email: " + mail);
+	var mail = String(pdata['email1']);
+
 	var x = String(pdata['hidden']);
 	//calebs code to add foods the user chooses to their database 
 	//x is the string representing all the foods the user chose
