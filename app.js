@@ -415,7 +415,7 @@ file = 'account.html';
 			}
 			var dbo = db.db("users");
 			var coll = dbo.collection("profiles");
-			var myquery = {email:username};
+			var myquery = {email:stringURL};
 			
 			
 			
