@@ -40,7 +40,6 @@ app.get('/index.html/process', function (req, res, next) {
   req.on('end', () => {
 	pdata = qs.parse(pdata);
 	var Email = pdata["email"];
-	 var name = pdata["fullname"];
 	
 		MongoClient.connect(urll, { useUnifiedTopology: true }, function(err, db) {
 		console.log("hello");
@@ -69,8 +68,12 @@ app.get('/index.html/process', function (req, res, next) {
 			setTimeout(function(){db.close;}, 2000);
 		}); 
 });
-file = "home.html";
- fs.readFile(file, function(err, txt) {
+	res.redirect('/home.html');
+	return;
+});
+app.get('/home.html', function (req, res) {
+  file = 'home.html';
+  fs.readFile(file, function(err, txt) {
       if(err) { return console.log(err); }
       res.writeHead(200, {'Content-Type': 'text/html'});
       res.write(txt);
@@ -390,7 +393,6 @@ file = 'account.html';
       if(err) { return console.log(err); }
       res.writeHead(200, {'Content-Type': 'text/html'});
       res.write(txt);
-      setTimeout(function(){res.end();}, 2000);
     });
 	pdata = "";
 	req.on('data', data => {
@@ -399,7 +401,36 @@ file = 'account.html';
 	req.on('end',() => {
 	pdata = qs.parse(pdata);
 	var stringURL = String(pdata['email']);
-	getusersfoods(stringURL);
+	
+	MongoClient.connect(userurl,{useUnifiedTopology:true},function(err,db){
+		if(err) {
+			console.log("Connection err: " + err);
+		}
+		var dbo = db.db("users");
+		var coll = dbo.collection("profiles");
+		var myquery = {email:username};
+		coll.find(myquery).toArray(function(err,itmes){
+			if(err){
+				console.log("Error: "+err);
+				console.log("<br>");
+				return;
+			} else if (items.length == 0) {
+				console.log("no user of this email found");
+				console.log("<br>");
+				return;
+			} else {
+				res.write("<h1>My Favorites</h1>");
+				res.write("<table>");
+				res.write("<tr> <th>Food</th> <th>Meal</th> <th>Dining Hall</th> <th>Date</th> </tr>");
+				for (i=0; i < items.length; i++) {
+					res.write("<tr><td>" + itmes[i].food + "</td><td>" + items[i].meal  + "</td><td>" + items[i].hall 
+						  + "</td><td>" + items[i].longdate + "</td></tr>");
+				}
+				res.write("</table>");
+			}
+		}
+	
+	//getusersfoods(stringURL);
 	});
 	
   //console.log("returned user food arr" + userfoodarr);
@@ -457,9 +488,7 @@ async function checkfoods(foodarr) {
     console.log("checking: " + foodarr);
     
     //async function getfoods(foodName, curruserfood, numuserfoods, res ) {
-        
         tempstring = "";
-        
         client =new MongoClient(foodsurl,{ useUnifiedTopology: true });
         
         //await    
