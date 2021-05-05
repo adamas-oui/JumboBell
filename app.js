@@ -95,8 +95,8 @@ app.get('/menu.html/breakfast',function(req,res) {
 	
 		stringURL = stringURL.split("=");
 		stringURL = stringURL[1];
-		//stringURL = stringURL.split(";");
-		//stringURL = stringURL[0];
+		stringURL = stringURL.split(";");
+		stringURL = stringURL[0];
 		res.write("User email: " + stringURL );
 
 	      res.write(txt);	  
