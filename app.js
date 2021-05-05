@@ -110,7 +110,7 @@ app.get('/menu.html/breakfast',function(req,res) {
 					  var bfast = "";
 					  bfast += ("<div id='bfast' style='width:30%;'>");
 					  bfast += ("<h1>Breakfast</h1>");
-					  bfast += ("<br><input type='submit' value='Add Selected Food to Favorites'/>");
+					  bfast += ("<br><input type='submit' value='Add Selected Food to Favorites'/><br><br>");
 					  for (i=0; i<items.length; i++) {
 						  //check if repeated value
 						  var repeatedvalue = false;
@@ -174,7 +174,7 @@ app.get('/menu.html/lunch',function (req,res) {
 					  var lunch = "";
 					  lunch += ("<div id='lunch' style='width:30%;'>");
 					  lunch += ("<h1>Lunch</h1>");
-					  lunch += ("<br><input type='submit' value='Add Selected Food to Favorites'/>");
+					  lunch += ("<br><input type='submit' value='Add Selected Food to Favorites'/><br><br>");
 					  for (i=0; i<items.length; i++) {
 						  //check if repeated value
 						  var repeatedvalue = false;
@@ -236,7 +236,7 @@ app.get('/menu.html/dinner',function (req,res) {
 					  var dinner = "";
 					  dinner += ("<div id='dinner' style='width:30%;'>");
 					  dinner += ("<h1>Dinner</h1>");
-					  dinner += ("<br><input type='submit' value='Add Selected Food to Favorites'/>");
+					  dinner += ("<br><input type='submit' value='Add Selected Food to Favorites'/><br><br>");
 					  for (i=0; i<items.length; i++) {
 						  //check if repeated value
 						  var repeatedvalue = false;
