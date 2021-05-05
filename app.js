@@ -458,7 +458,7 @@ file = 'account.html';
 						//go through user's favorite foods and check if food in database = user favorite food
 						for (j=0; j<faves.length;i++) {
 							if (items[i].food == faves[j]) {
-								foodstr += ("<tr><td>" + itmes[i].food + "</td><td>" + items[i].meal  + "</td><td>" + items[i].hall 
+								foodstr += ("<tr><td>" + items[i].food + "</td><td>" + items[i].meal  + "</td><td>" + items[i].hall 
 							  	+ "</td><td>" + items[i].longdate + "</td></tr>");
 							}
 						}
