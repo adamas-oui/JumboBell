@@ -306,13 +306,6 @@ app.post('/menu.html/process', function (req, res) {
 	pdata = qs.parse(pdata);
 	var mail;
 	var x = String(pdata['hidden']);
-	reader = fs.createReadStream('index.html');
-	var qdata = "";
-	reader.on('data', function (chunk) {
-	    qdata += String(chunk);
-	});
-	mail = String(qdata["email"]);
-	res.write(mail);
 	//calebs code to add foods the user chooses to their database 
 	//x is the string representing all the foods the user chose
 	 uploaduserfood(x, mail);
