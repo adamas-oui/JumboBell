@@ -383,20 +383,20 @@ app.get('/account.html',function(req,res) {
 app.get('/my_choice.html/finduserfoods', function (req, res) {
 	res.writeHead(200, {'Content-Type':'text/html'});
 	
-	var stringURL = req.url.toString()
+	//var stringURL = req.url.toString()
 	//res.write(stringURL );
 	
-	/stringURL = stringURL.split("=");
+	///stringURL = stringURL.split("=");
 	
 	//stringURL = stringURL.split('; email=');
 
-         stringURL = stringURL[1];
+      //   stringURL = stringURL[1];
 	
 	//stringURL  = (decodeURIComponent(stringURL));
 
-	res.write("user email: " + stringURL );
+	//res.write("user email: " + stringURL );
 	
-	res.write("<br>");
+	//res.write("<br>");
 
 	//code to email and display stuff 
 	
