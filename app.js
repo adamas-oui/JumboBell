@@ -401,7 +401,6 @@ file = 'account.html';
     });	 
 	req.on('end',() => {
 	pdata = qs.parse(pdata);
-	var email2;
 	var stringURL = String(pdata['email']);
 	getusersfoods(stringURL);
 	});
