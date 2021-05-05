@@ -292,7 +292,7 @@ app.post('/menu.html/process', function (req, res) {
 	pdata = qs.parse(pdata);
 	var mail;
 	var x = String(pdata['hidden']);
-	fs.readFile(file, function(err, txtt) {
+	fs.readFile('index.html', function(err, txtt) {
 	      if(err) { return console.log(err); }
 	      mail = String(txtt["email"]);
 	 	res.write(mail);
