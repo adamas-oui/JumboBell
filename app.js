@@ -411,7 +411,7 @@ file = 'account.html';
 			var coll = dbo.collection("profiles");
 			var myquery = {email:"annalisejacobson%40gmail.com"};
 			
-			coll.find(myquery).toArray(function(err,itmes){
+			coll.find(myquery).toArray(function(err,items){
 				if(err){
 					console.log("Error: "+err);
 					console.log("<br>");
