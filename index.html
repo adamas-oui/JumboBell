@@ -23,8 +23,8 @@
 			  margin-top:10%;
 			  margin-bottom:10%;
 		  }
-		  #nameemail {
-		
+		  .gsignin2 {
+			  text-align:center;
 		  }
 	  </style>
   </head>
@@ -50,20 +50,15 @@
   </div> 
 	
 <p><div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div> </p>
-
 <div class="signin">
-
-<form id = "signinform" action = "https://jumbo-bell.herokuapp.com/index.html/process" method = "get" onSubmit = "setCookie()">
-	<h1>Sign In</h1>
-	<br>
+	<h1>Sign In</h1><br>
+	<form id = "signinform" action = "https://jumbo-bell.herokuapp.com/index.html/process" method = "get" onSubmit = "setCookie()">
 	<div id = "nameemail">
-	 
 	  <p>Name: <input type="text" id = "fullname" name="fullname" /></p>
 	  <p>Email: <input type="text" id = "email" name="email" /></p>
-	</div>
-	
-<input type="submit" value="Sign In" >
-</form>
+	</div>	
+	<input type="submit" value="Sign In" >
+	</form>
 </div>
 <a href="#" onclick="signOut();">Sign out</a>
 <script>
