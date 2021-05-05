@@ -320,6 +320,7 @@ app.post('/menu.html/process', function (req, res) {
 	req.on('end', () => {
 	pdata = qs.parse(pdata);
 	var mail = String(pdata['email1']);
+	res.write('mail');
 
 	var x = String(pdata['hidden']);
 	//calebs code to add foods the user chooses to their database 
