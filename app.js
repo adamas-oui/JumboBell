@@ -402,10 +402,11 @@ file = 'account.html';
 		
 		//store user's favorite foods into array
 		var faves = [];
-		MongoClient.connect(userurl,{useUnifiedTopology:true},function(err,db){
+		MongoClient.connect(urll,{useUnifiedTopology:true},function(err,db){
 			if(err) {
 				console.log("Connection err: " + err);
 			}
+			
 			var dbo = db.db("users");
 			var coll = dbo.collection("profiles");
 			var myquery = {email:username};
