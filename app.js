@@ -22,8 +22,8 @@ app.get('/', function (req, res, next) {
       setTimeout(function(){res.end();}, 2000);
     });
 });
-app.get('/home.html', function (req, res, next) {
-  file = 'home.html';
+app.get('/index.html', function (req, res, next) {
+  file = 'index.html';
   fs.readFile(file, function(err, txt) {
       if(err) { return console.log(err); }
       res.writeHead(200, {'Content-Type': 'text/html'});
@@ -31,14 +31,7 @@ app.get('/home.html', function (req, res, next) {
       setTimeout(function(){res.end();}, 2000);
     });
 });
-app.get('/process', function (req, res, next) {
-	 file = 'home.html';
-	  fs.readFile(file, function(err, txt) {
-	      if(err) { return console.log(err); }
-	      res.writeHead(200, {'Content-Type': 'text/html'});
-	      res.write(txt);
-	      setTimeout(function(){res.end();}, 2000);
-	    });
+app.get('/index.html/process', function (req, res, next) {
 	console.log("Process the form");
 	pdata = "";
 	req.on('data', data => {
@@ -75,9 +68,21 @@ app.get('/process', function (req, res, next) {
 			setTimeout(function(){db.close;}, 2000);
 		}); 
 });
+	res.redirect('/home.html');
+	return;
+});
+app.get('/home.html', function (req, res) {
+  file = 'home.html';
+  fs.readFile(file, function(err, txt) {
+      if(err) { return console.log(err); }
+      res.writeHead(200, {'Content-Type': 'text/html'});
+      res.write(txt);
+      setTimeout(function(){res.end();}, 2000);
+    });
 });
 
 app.get('/menu.html/breakfast',function(req,res) {
+	
 	
 	file = 'my_choice.html';
 	fs.readFile(file, function(err, txt) {
@@ -299,7 +304,7 @@ app.post('/menu.html/process', function (req, res) {
   
 	req.on('end', () => {
 	pdata = qs.parse(pdata);
-	var mail = pdata["email"];
+	var mail;
 	var x = String(pdata['hidden']);
 	//calebs code to add foods the user chooses to their database 
 	//x is the string representing all the foods the user chose
@@ -394,193 +399,99 @@ file = 'account.html';
            pdata += data.toString();
     });	 
 	req.on('end',() => {
-	pdata = qs.parse(pdata);
-	var stringURL = String(pdata['email']);
-	
-	MongoClient.connect(userurl,{useUnifiedTopology:true},function(err,db){
-		if(err) {
-			console.log("Connection err: " + err);
-		}
-		var dbo = db.db("users");
-		var coll = dbo.collection("profiles");
-		var myquery = {email:stringURL};
-		coll.find(myquery).toArray(function(err,itmes){
-			if(err){
-				console.log("Error: "+err);
-				console.log("<br>");
-				return;
-			} else if (items.length == 0) {
-				console.log("no user of this email found");
-				console.log("<br>");
-				return;
-			} else {
-				res.write("<h1>My Favorites</h1>");
-				res.write("<table>");
-				res.write("<tr> <th>Food</th> <th>Meal</th> <th>Dining Hall</th> <th>Date</th> </tr>");
-				for (i=0; i < items.length; i++) {
-					res.write("<tr><td>" + itmes[i].food + "</td><td>" + items[i].meal  + "</td><td>" + items[i].hall 
-						  + "</td><td>" + items[i].longdate + "</td></tr>");
-				}
-				res.write("</table>");
+		pdata = qs.parse(pdata);
+		var stringURL = String(pdata['email']);
+		
+		//store user's favorite foods into array
+		var faves = [];
+		MongoClient.connect(userurl,{useUnifiedTopology:true},function(err,db){
+			if(err) {
+				console.log("Connection err: " + err);
 			}
+			var dbo = db.db("users");
+			var coll = dbo.collection("profiles");
+			var myquery = {email:username};
+			
+			
+			
+			coll.find(myquery).toArray(function(err,itmes){
+				if(err){
+					console.log("Error: "+err);
+					console.log("<br>");
+					return;
+				} else if (items.length == 0) {
+					console.log("no user of this email found");
+					console.log("<br>");
+					return;
+				} else {
+					faves = items[0].foods;
+				}
+			});
 		});
-	
-	//getusersfoods(stringURL);
+		
+		//print foods
+		MongoClient.connect(url2,{useUnifiedTopology:true},function(err,db){
+			if(err) {
+				console.log("Connection err: " + err);
+			}
+			var dbo = db.db("tuftsdining");
+			var coll = dbo.collection("menu");			
+
+			coll.find({}).toArray(function(err,itmes){
+				if(err){
+					console.log("Error: "+err);
+					console.log("<br>");
+					return;
+				} else {
+					var foodstr = "";
+					foodstr += ("<h1>My Favorites</h1>");
+					foodstr += ("<table>");
+					foodstr += ("<tr> <th>Food</th> <th>Meal</th> <th>Dining Hall</th> <th>Date</th> </tr>");
+					//go through entire database of foods
+					for (i=0; i < items.length; i++) {
+					
+						//go through user's favorite foods and check if food in database = user favorite food
+						for (j=0; j<faves.length;i++) {
+							if (items[i].food == faves[j]) {
+								foodstr += ("<tr><td>" + itmes[i].food + "</td><td>" + items[i].meal  + "</td><td>" + items[i].hall 
+							  	+ "</td><td>" + items[i].longdate + "</td></tr>");
+							}
+						}
+						
+					}
+					foodstr += ("</table>");
+					res.write(foodstr);
+					sendmail(foodstr);
+				}
+			});
 		});
-	});
-  //console.log("returned user food arr" + userfoodarr);
+		var nodemailer = require('nodemailer');
+		function sendmail(sendstring) {
 
+			var transporter = nodemailer.createTransport({
+			  service: 'gmail',
+			  auth: {
+				user: 'cpekowsky@gmail.com',
+				pass: 'stinkfart101'
+			  }
+			});
 
+			var mailOptions = {
+			  from: 'cpekowsky@gmail.com',
+			  to: 'cpekowsky@gmail.com',
+			  subject: 'foods being served',
+			  text: sendstring
+			};
 
- function getusersfoods(useremail) {
-    
-        
-    MongoClient.connect(userurl,{useUnifiedTopology:true},function(err, db ) {
-        
-        
-        if (err) {
-            console.log("Connection err: " + err);
-        }
-        
-        
-        var dbo = db.db("users");
-        var coll = dbo.collection('profiles');
-        //var coll = dbo.collection("profile2");
-        
-        var myquery = { email: useremail };
-                    
-        coll.find( myquery ).toArray(function(err, items) {
-            
-              if (err) {
-                  console.log("Error: " + err);  
-                  console.log("<br>")
-                  return;
-
-              } 
-              
-              else if( items.length == 0 ) {
-                  console.log("no user of this email found");
-                  console.log("<br>")
-                  return
-
-              }//end else if items = 0 
-              
-              else   {
-                //  console.log(items[0].foods);
-                  
-                  checkfoods(items[0].foods);
-                  db.close();
-                  return items[0].foods;
-              }//end else 
-             // return items[0].foods;
-          })//coll find 
-
-      })//mongo connect 
-
-  }//end function         
-
-async function checkfoods(foodarr) {
-    console.log("checking: " + foodarr);
-    
-    //async function getfoods(foodName, curruserfood, numuserfoods, res ) {
-        tempstring = "";
-        client =new MongoClient(foodsurl,{ useUnifiedTopology: true });
-        
-        //await    
-        await client.connect( );
-            
-            var dbo = client.db("tuftsdining");
-            var coll = dbo.collection("menu");
-
-            foodstring = "";
-            
-            
-            var query = {food:{ $in: foodarr }}
-
-            //var sendstring = "";
-            
-            //db.things.find({ words: { $in: ["text", "here"] }});
-
-            await coll.find(query).toArray(function(err,items) {
-                if (err) {
-                   console.log("Error: " + err);
-                } else if (items.length == 0) {
-                    console.log(" No food being served with the name " );
-                    console.log("\n")
-                    console.log()
-                } else {
-                    
-                //    console.log(items);
-                    var mystring =  "";
-		//mystring is formmatted for email, restring is formmatted for displaying on page
-		    var restring = "current users favorite food serving times: <br>";
-                    for(i = 0; i < items.length; i++) {
-                        //console.log( " served food: " + items[i].food + " is being served at " + items[i].hall + " on " + items[i].longdate + "\n" );
-                        mystring+= items[i].food + " is being served at " + items[i].hall + " on " + items[i].longdate + " for " + items[i].meal + "\n";
-			restring += items[i].food + " is being served at " + items[i].hall + " on " + items[i].longdate + " for " + items[i].meal + "<br>";
-
-                    }
-                    
-                    sendmail(mystring, restring);
-
-                }
-                
-                //res.write(sendstring);
-
-                
-            })
-            
-        
-    //    client.close();
-    setTimeout(function(){ client.close(); console.log("Success!");}, 1000);
-
-
-    //console.log(tempstring);
-    return tempstring;
-
-
-}
-
-var nodemailer = require('nodemailer');
-
-function sendmail(sendstring, restring) {
-    
-    //                sendstring += (items[i].food + " is being served at " + items[i].hall + " on " + items[i].longdate + " \n") ;
-
-	//outputs string to page:
-	res.write(restring);
-
-    var transporter = nodemailer.createTransport({
-      service: 'gmail',
-      auth: {
-        user: 'cpekowsky@gmail.com',
-        pass: 'stinkfart101'
-      }
-    });
-
-    var mailOptions = {
-      from: 'cpekowsky@gmail.com',
-      to: 'cpekowsky@gmail.com',
-      subject: 'foods being served',
-      text: sendstring
-    };
-
-    transporter.sendMail(mailOptions, function(error, info){
-      if (error) {
-        console.log(error);
-      } else {
-        console.log('Email sent: ' + info.response);
-      }
-    });
-    
-}
-
-	
-	
-	//end code to email and display stuff 
-	setTimeout(function(){res.end();}, 2000);
-
-
+			transporter.sendMail(mailOptions, function(error, info){
+			  if (error) {
+				console.log(error);
+			  } else {
+				console.log('Email sent: ' + info.response);
+			  }
+			});
+		}
+});
 });
 
 
