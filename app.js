@@ -35,8 +35,8 @@ app.get('/process', function (req, res) {
 	console.log("Process the form");
 		var stringURL = req.url.toString();
 		stringURL = stringURL.split("email=");
-		stringURL = stringURL[1];
 		stringURL = decodeURIComponent(stringURL);
+		stringURL = stringURL[1];
 		MongoClient.connect(urll, { useUnifiedTopology: true }, function(err, db) {
 		console.log("hello");
 		  if(err) { return console.log("mongo err: " + err); }
@@ -179,7 +179,7 @@ app.get('/menu.html/lunch',function (req,res) {
 	      res.writeHead(200, {'Content-Type': 'text/html'});
 		
 		var stringURL = req.url.toString();
-	
+		stringURL = decodeURIComponent(stringURL);
 		stringURL = stringURL.split("=");
 		stringURL = stringURL[1];
 		stringURL = stringURL.split(";");
@@ -257,7 +257,7 @@ app.get('/menu.html/dinner',function (req,res) {
 	      res.writeHead(200, {'Content-Type': 'text/html'});
 		
 		var stringURL = String(req.url);
-	
+		stringURL = decodeURIComponent(stringURL);
 		stringURL = stringURL.split("=");
 		stringURL = stringURL[1];
 		stringURL = stringURL.split(";");
@@ -380,6 +380,7 @@ OGstring = decodeURIComponent ( (decodeURIComponent(OGstring) ) ) ;
  useremail = decodeURIComponent(useremail);
 console.log(useremail);
   secondpart = OGstring.split("foodname=")[2];
+secondpart = decodeURIComponent(secondpart);
   secondpart = secondpart.split(";")[0];
  secondpart = secondpart.split("=");
  secondpart.splice(0,1);
