@@ -360,7 +360,6 @@ app.get('/account.html',function(req,res) {
      	if(err) { return console.log(err); }
      	res.writeHead(200, {'Content-Type': 'text/html'});
      	res.write(txt);
-	res.write("<br> My Favorites: ");
 		//display user database favorite foods data
      	setTimeout(function(){res.end();}, 2000);
    });
@@ -438,7 +437,7 @@ file = 'account.html';
 					return;
 				} else {
 					var foodstr = "";
-					foodstr += ("<div class='bodytext' style='background-color:white; width:60%; text-align:center; position:relative; align-content:center; margin-right:auto; margin-left:auto;'>");
+					foodstr += ("<div class='bodytext' style='background-color:white; width:60%; text-align:center; position:relative; top:50px; align-content:center; margin-right:auto; margin-left:auto;'>");
 					foodstr += ("<h1>My Favorites</h1>");
 					foodstr += ("<table style = 'color:black; align-content:center; margin-right:auto; margin-left:auto; position:relative; background-color:white; border:2px;'>");
 					foodstr += ("<tr> <th>Food</th> <th>Meal</th> <th>Dining Hall</th> <th>Date</th> </tr>");
