@@ -386,6 +386,8 @@ app.get('/my_choice.html/finduserfoods',function(req,res) {
  
   string = OGstring.split("foodname=")[1];
   useremail = string.substring(0, string.length - 1);
+ useremail = decodeURIComponent(useremail);
+console.log(useremail);
   secondpart = OGstring.split("foodname=")[2];
   
  secondpart = secondpart.split("=");
@@ -418,23 +420,53 @@ app.get('/my_choice.html/finduserfoods',function(req,res) {
  
  }
 
- //secondpart = secondpart.shift();
    secondpart.splice( (secondpart.length -1) , (secondpart.length - 1) );
   console.log(secondpart);
 
-	/*
-	string = req.url.toString();
-	OGstring = string;
-	res.write(string+"<br>");
-	string = string.split("foodname=")[1];
-  	useremail = string.substring(0, string.length - 1);
-	res.write("<br>" + useremail + "<br>");
- 	 secondpart = string[1];
-	res.write(secondpart);
- 	*/
-  //console.log(secondpart);
- // res.write(secondpart);
+	uploaduserfood(secondpart, useremail);
+//OK now copied code that uploads to user 
+	    function uploaduserfood(foodstring, useremail) { 
+            
+        //foodstring = foodstring.split(",")
+    
+        
+        MongoClient.connect(userurl,{useUnifiedTopology:true},function(err, db ) {
+                        
+            
+            
+            if (err) {
+                console.log("Connection err: " + err);
+            }
+            var dbo = db.db("users");
+            var coll = dbo.collection('profiles');
+                            
+            console.log(foodstring);                        
+            var myquery = { email: useremail };
+            var newvalues = {  $addToSet: { foods: { $each: foodstring } } };
+                
+            coll.updateOne(myquery, newvalues, function(err, res) {
+                 if (err) throw err;
+                 console.log("user: " + useremail + " updated");
+                 });
+                
+                
+        //    }
+            
+            
+            
 
+        
+            
+            setTimeout(function(){ db.close(); console.log("Success!");}, 1000);
+        })
+
+        
+    }
+
+
+	
+	
+	//end of code that uploads to user 
    setTimeout(function(){res.end();}, 2000);
 
 });
