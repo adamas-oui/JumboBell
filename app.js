@@ -154,7 +154,7 @@ app.get('/menu.html/breakfast',function(req,res) {
 					  }
 					  bfast += ("</div>");
 					  res.write(bfast);
-					  res.write("<input type = 'text' id = 'hidden' name = 'hidden' >");
+					  res.write("<input type = 'hidden' id = 'hidden' name = 'hidden' >");
 					  res.write("</form>");
 
 					  res.write("<script>");
