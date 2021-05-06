@@ -380,14 +380,15 @@ app.get('/my_choice.html/finduserfoods',function(req,res) {
      	res.writeHead(200, {'Content-Type': 'text/html'});
 	
 	res.write(req.url);
-	var string = req.url.toString();
-	  string = string.split("foodname=")[1];
-  var useremail = string.substring(0, string.length - 1);
+	string = req.url.toString();
+	  string = string.split("foodname=")[0];
+  useremail = string.substring(0, string.length - 1);
 	res.write(useremail+"<br>");
-  var secondpart = string.split("foodname=")[2];
+  secondpart = string.split("foodname=")[1];
   
  secondpart = secondpart.split("=");
  secondpart.splice(0,1);
+	
  for(var i = 0; i < secondpart.length; i++ ) {
      
      
