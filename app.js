@@ -375,8 +375,8 @@ app.get('/account.html',function(req,res) {
 
 	 OGstring = decodeURIComponent ( (decodeURIComponent(OGstring) ) ) ;
  
-  string1 = OGstring.split("foodname=")[1];
-  useremail = string1.substring(0, string.length - 1);
+  var string1 = OGstring.split("foodname=")[1];
+  useremail = string1.substring(0, string1.length - 1);
  useremail = decodeURIComponent(useremail);
 console.log(useremail);
   secondpart = OGstring.split("foodname=")[2];
