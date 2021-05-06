@@ -419,7 +419,7 @@ app.get('/my_choice.html/finduserfoods',function(req,res) {
  }
 
  //secondpart = secondpart.shift();
- 
+   secondpart.splice( (secondpart.length -1) , (secondpart.length - 1) );
   console.log(secondpart);
 
 	/*
