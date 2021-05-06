@@ -47,6 +47,41 @@
     </div>
 
     <div class="processchoices">
+	    
+	    	<form method = "GET" action = "https://jumbo-bell.herokuapp.com/my_choice.html/finduserfoods">
+		Click this button to see when all of your favorite foods are being served.
+		<br><br>
+		<input type = "text" id = "email" name = "foodname"/>
+		<br><br>
+		<input type = "submit" value = "Submit"/>
+	</form>
+	    
+	    	  	      <script language = "javascript">
+		      //calebs code getting cookies
+		      
+ 		     function getCookie() {
+               		 var decodedCookie = decodeURIComponent(document.cookie);               
+               		 document.write(decodedCookie);
+	
+              		  //document.write("<br>");
+			     
+ 			 decodedCookie = decodedCookie.split('; email=');
+
+               		 decodedCookie = decodedCookie[1];
+               
+               		//document.write(decodedCookie);
+
+                		document.getElementById('email').value = decodedCookie;
+
+          		 }
+           
+            	getCookie();	 
+			      
+
+		      
+		     </script>
+
+
       <h1>Foods added to favorites!</h1>
       <button type="button" onclick="location.href='https://jumbo-bell.herokuapp.com/account.html';" >Click Here to View Your Favorites</button>
       <button type="button" onclick="location.href='https://jumbo-bell.herokuapp.com/menu.html';">Click Here to Go Back to Menus</button>
