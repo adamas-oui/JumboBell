@@ -53,7 +53,7 @@ app.get('/index.html/process', function (req, res, next) {
 						console.log("Error: '" + err+"'}");
 					  } 
 					  else if(items.length == 0){
-						  var newData = {"fullname": name, "email": Email,"foods":[]};
+						  var newData = { "email": Email,"foods":[]};
 						  collection.insertOne(newData, function(err, res){
 							  if(err) { 
 								  console.log("query err: " + err); 
