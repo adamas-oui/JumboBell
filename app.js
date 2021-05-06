@@ -323,7 +323,7 @@ app.get('/menu.html/dinner',function (req,res) {
 	});
 });
 app.post('/menu.html/process', function (req, res) {
-	
+
 
 	file='processchoices.html';
 	fs.readFile(file,function(err,txt) {
@@ -333,7 +333,8 @@ app.post('/menu.html/process', function (req, res) {
 		setTimeout(function(){res.end();}, 2000);
 	});
 });
-          
+  
+            
 app.get('/about.html', function (req, res) {
   file = 'about.html';
   fs.readFile(file, function(err, txt) {
@@ -437,9 +438,9 @@ file = 'account.html';
 					return;
 				} else {
 					var foodstr = "";
-					foodstr += ("<div class='bodytext' style='background-color:white; width:60%;'>");
-					foodstr += ("<h1 style = 'text-align:center; position:relative; background-color:white;'>My Favorites</h1>");
-					foodstr += ("<table style = 'color:black; align-content:center; position:relative; background-color:white; border:2px;'>");
+					foodstr += ("<div class='bodytext' style='background-color:white; width:60%; text-align:center; position:relative; align-content:center; margin-right:auto; margin-left:auto;'>");
+					foodstr += ("<h1>My Favorites</h1>");
+					foodstr += ("<table style = 'color:black; align-content:center; margin-right:auto; margin-left:auto; position:relative; background-color:white; border:2px;'>");
 					foodstr += ("<tr> <th>Food</th> <th>Meal</th> <th>Dining Hall</th> <th>Date</th> </tr>");
 					var emailstring = "current users favorite foods: \n";
 					//go through entire database of foods
