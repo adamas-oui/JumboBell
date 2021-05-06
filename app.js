@@ -382,7 +382,7 @@ console.log(useremail);
   secondpart = OGstring.split("foodname=")[2];
 secondpart = decodeURIComponent(secondpart);
   secondpart = secondpart.split(";")[0];
- secondpart = secondpart.split("=")[1];
+ secondpart = secondpart.split("=");
  secondpart.splice(0,1);
  for(var i = 0; i < secondpart.length; i++ ) {
      
