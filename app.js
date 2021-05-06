@@ -381,7 +381,7 @@ app.get('/my_choice.html/finduserfoods',function(req,res) {
 	
 	res.write(req.url);
      	setTimeout(function(){res.end();}, 2000);
-	string = req.url;
+	string = req.url.toString();;
 	  string = string.split("foodname=")[1];
   useremail = string.substring(0, string.length - 1);
 	res.write(useremail+"<br>");
