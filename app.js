@@ -366,13 +366,13 @@ app.get('/account.html',function(req,res) {
      	res.writeHead(200, {'Content-Type': 'text/html'});
      	res.write(txt);
 		//display user database favorite foods data
-     	setTimeout(function(){res.end();}, 2000);
-   });
-});
+    // 	setTimeout(function(){res.end();}, 2000);
+  // });
+///});
 
 //adding foods to user 
-app.get('/my_choice.html/finduserfoods',function(req,res) {
-     	res.writeHead(200, {'Content-Type': 'text/html'});
+//app.get('/my_choice.html/finduserfoods',function(req,res) {
+     //	res.writeHead(200, {'Content-Type': 'text/html'});
 	
 
 	 OGstring = req.url.toString();
