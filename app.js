@@ -171,6 +171,14 @@ app.get('/menu.html/lunch',function (req,res) {
 	fs.readFile(file, function(err, txt) {
 	      if(err) { return console.log(err); }
 	      res.writeHead(200, {'Content-Type': 'text/html'});
+		
+		var stringURL = req.url.toString();
+	
+		stringURL = stringURL.split("=");
+		stringURL = stringURL[1];
+		stringURL = stringURL.split(";");
+		stringURL = stringURL[0];
+
 	      res.write(txt);	  
 	  
 		  MongoClient.connect(url2,{useUnifiedTopology:true},function(err, db) {
@@ -181,6 +189,14 @@ app.get('/menu.html/lunch',function (req,res) {
 			var coll = dbo.collection("menu3");
 
 			  res.write("<form method='post' action='https://jumbo-bell.herokuapp.com/menu.html/process' onsubmit = 'getFormData()'>");
+			  
+			  res.write("<br>");
+			  res.write("<br>");
+			  
+			  var emailform = "<input type = 'text' style='display:none' id = 'email' value = " + stringURL + "name = 'foodname'/> "
+
+			  res.write(emailform);
+
 			  var luncharr = [];
 			  coll.find({meal:"Lunch"}).toArray(function(err,items) {
 				  if(err) {
@@ -233,6 +249,14 @@ app.get('/menu.html/dinner',function (req,res) {
 	fs.readFile(file, function(err, txt) {
 	      if(err) { return console.log(err); }
 	      res.writeHead(200, {'Content-Type': 'text/html'});
+		
+		var stringURL = req.url.toString();
+	
+		stringURL = stringURL.split("=");
+		stringURL = stringURL[1];
+		stringURL = stringURL.split(";");
+		stringURL = stringURL[0];
+
 	      res.write(txt);	  
 	  
 		  MongoClient.connect(url2,{useUnifiedTopology:true},function(err, db) {
@@ -243,6 +267,15 @@ app.get('/menu.html/dinner',function (req,res) {
 			var coll = dbo.collection("menu3");
 
 			  res.write("<form method='post' action='https://jumbo-bell.herokuapp.com/menu.html/process' onsubmit = 'getFormData()'>");
+			 
+			 res.write("<br>");
+			  res.write("<br>");
+			  
+			  var emailform = "<input type = 'text' style='display:none' id = 'email' value = " + stringURL + "name = 'foodname'/> "
+
+			  res.write(emailform);
+ 
+			  
 			  var dinnerarr = [];
 			  coll.find({meal:"Dinner"}).toArray(function(err,items) {
 				  if(err) {
