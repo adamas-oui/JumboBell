@@ -383,8 +383,9 @@ app.get('/my_choice.html/finduserfoods',function(req,res) {
 	res.write(string+"<br>");
 	string = string.split("foodname=")[1];
   	useremail = string.substring(0, string.length - 1);
-	res.write("<br>" + useremail);
- // secondpart = string.split("foodname=")[1];
+	res.write("<br>" + useremail + "<br>");
+ 	 secondpart = string[1];
+	res.write(secondpart);
  
   //console.log(secondpart);
  // res.write(secondpart);
