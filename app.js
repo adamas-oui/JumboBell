@@ -360,10 +360,6 @@ file = 'account.html';
 
     });	 
 	req.on('end',() => {
-		pdata = qs.parse(pdata);
-		var stringURL = String(pdata['email']);
-		stringURL = String(stringURL.split(';')[0]);
-		console.log(stringURL);
 
 		//store user's favorite foods into array
 		var faves = [];
@@ -374,7 +370,7 @@ file = 'account.html';
 			
 			var dbo = db.db("users");
 			var coll = dbo.collection("profiles");
-			var myquery = {email: stringURL};
+			var myquery = {email: stringURL2};
 			
 			coll.find(myquery).toArray(function(err,items){
 				if(err){
@@ -410,7 +406,7 @@ file = 'account.html';
 					foodstr += ("<h1>My Favorites</h1>");
 					foodstr += ("<table style = color:white;>");
 					foodstr += ("<tr> <th>Food</th> <th>Meal</th> <th>Dining Hall</th> <th>Date</th> </tr>");
-					emailstring = "current users favorite foods: \n";
+					var emailstring = "current users favorite foods: \n";
 					//go through entire database of foods
 					for (i=0; i < items.length; i++) {
 					
