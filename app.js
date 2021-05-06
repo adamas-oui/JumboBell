@@ -34,26 +34,23 @@ app.get('/index.html', function (req, res, next) {
 app.get('index.html/process', function (req, res, next) {
 	console.log("Process the form");
 	pdata = "";
-	req.on('data', data => {
-           pdata += data.toString();
-    });
-  req.on('end', () => {
-	pdata = qs.parse(pdata);
-	var Email = String(pdata["email"]);
-	var name = String(pdata["fullname"]);
+		var stringURL = stringURL.split("=");
+		stringURL = stringURL[1];
+		stringURL = stringURL.split(";");
+		stringURL = stringURL[0];
 		MongoClient.connect(urll, { useUnifiedTopology: true }, function(err, db) {
 		console.log("hello");
 		  if(err) { return console.log("mongo err: " + err); }
 
 			var dbo = db.db("users");
 			var collection = dbo.collection('profiles');
-			var theQuery = {email: Email};
+			var theQuery = {email: stringURL};
 				collection.find(theQuery).toArray(function(err, items) {
 					  if (err) {
 						console.log("Error: '" + err+"'}");
 					  } 
 					  else if(items.length == 0){
-						  var newData = {"fullname":name,"email": Email,"foods":[]};
+						  var newData = {"email": stringURL,"foods":[]};
 						  collection.insertOne(newData, function(err, res){
 							  if(err) { 
 								  console.log("query err: " + err); 
@@ -63,7 +60,6 @@ app.get('index.html/process', function (req, res, next) {
 					});
 				} 
 
-		});
 			
 			setTimeout(function(){db.close;}, 2000);
 		}); 
