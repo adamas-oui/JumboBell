@@ -34,12 +34,12 @@ app.get('/index.html', function (req, res, next) {
 app.get('/process', function (req, res) {
 	console.log("Process the form");
 		var stringURL = req.url.toString();
-		stringURL = stringURL.split("email=");
 		stringURL = decodeURIComponent(stringURL);
+		stringURL = stringURL.split("email=");
 		stringURL = stringURL[1];
 		stringURL = stringURL.split(";");
 		stringURL = stringURL[0];
-		console.log("email input"+ stringURL);
+		console.log("email input "+ stringURL);
 		MongoClient.connect(urll, { useUnifiedTopology: true }, function(err, db) {
 		console.log("hello");
 		  if(err) { return console.log("mongo err: " + err); }
