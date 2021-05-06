@@ -442,7 +442,7 @@ file = 'account.html';
 				pass: 'stinkfart101'
 			  }
 			});
-			console.log("string URL: " + stringURL);
+			console.log("string URL: " + stringURL2);
 			var mailOptions = {
 			  from: 'cpekowsky@gmail.com',
 			  to: stringURL,
