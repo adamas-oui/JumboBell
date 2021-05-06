@@ -371,7 +371,7 @@ app.get('/account.html',function(req,res) {
 });
 
 //adding foods to user 
-app.get('/my_choice.html/finduserfoodsl',function(req,res) {
+app.get('/my_choice.html/finduserfoods',function(req,res) {
      	res.writeHead(200, {'Content-Type': 'text/html'});
 	
 
