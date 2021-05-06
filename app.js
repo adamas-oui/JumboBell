@@ -32,9 +32,8 @@ app.get('/index.html', function (req, res, next) {
     });
 });
 app.get('index.html/process', function (req, res) {
-	res.writeHead(200, {'Content-Type': 'text/html'});
 	console.log("Process the form");
-		var stringURL = res.url.toString();
+		/*var stringURL = res.url.toString();
 		stringURL = stringURL.split("=");
 		stringURL = stringURL[1];
 		stringURL = stringURL.split(";");
@@ -66,7 +65,7 @@ app.get('index.html/process', function (req, res) {
 		}); 
 });
 	//res.redirect('/home.html');
-	//return;
+	//return; */
 
 });
 app.get('/home.html', function (req, res) {
