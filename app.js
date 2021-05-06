@@ -31,7 +31,7 @@ app.get('/index.html', function (req, res, next) {
       setTimeout(function(){res.end();}, 2000);
     });
 });
-app.get('index.html/process', function (req, res) {
+app.get('/process', function (req, res) {
 	console.log("Process the form");
 		/*var stringURL = res.url.toString();
 		stringURL = stringURL.split("=");
