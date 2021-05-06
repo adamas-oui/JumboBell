@@ -154,7 +154,7 @@ app.get('/menu.html/breakfast',function(req,res) {
 					  }
 					  bfast += ("</div>");
 					  res.write(bfast);
-					  res.write("<input type = 'hidden' id = 'hidden' name = 'hidden' >");
+					  res.write("<input type = 'text' id = 'hidden' name = 'hidden' >");
 					  res.write("</form>");
 
 					  res.write("<script>");
@@ -234,7 +234,7 @@ app.get('/menu.html/lunch',function (req,res) {
 					  }
 					  lunch += ("</div>");
 					  res.write(lunch);
-					  res.write("<input type = 'hidden' id = 'hidden2' name = 'hidden' >");
+					  res.write("<input type = 'text' id = 'hidden2' name = 'hidden' >");
 					  res.write("</form>");
 
 					  res.write("<script>");
@@ -313,7 +313,7 @@ app.get('/menu.html/dinner',function (req,res) {
 					  }
 					  dinner += ("</div>");
 					  res.write(dinner);
-					  res.write("<input type = 'hidden' id = 'hidden3' name = 'hidden' >");
+					  res.write("<input type = 'text' id = 'hidden3' name = 'hidden' >");
 					  res.write("</form>");
 					  res.write("<script>");
 					  res.write("function getFormData(){");
