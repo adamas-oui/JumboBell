@@ -467,14 +467,13 @@ app.get('/account.html/process', function (req, res) {
 	console.log(req.url);
 	console.log(" SHOUld get actual thing: ")
 	var stringURL2 = req.url.toString();
-	console.log(stringURL2);
 	
 	stringURL2 = stringURL2.split("=");
-	var stringURL3 = String(stringURL2)[1];
-	var stringURL4 =  stringURL3.split(";");
-	var stringURL5 = stringURL4[0];
-	var stringURL6 = decodeURIComponent(stringURL5);
-	console.log(stringURL6 );
+	stringURL2 = String(stringURL2[1]);
+	stringURL2 =  stringURL2.split(";");
+	stringURL2 = String(stringURL2[0]);
+	stringURL2 = decodeURIComponent(stringURL2);
+	console.log(stringURL2);
 	
 
 file = 'account.html';
@@ -502,7 +501,7 @@ file = 'account.html';
 			
 			var dbo = db.db("users");
 			var coll = dbo.collection("profiles");
-			var myquery = {email: stringURL6};
+			var myquery = {email: stringURL2};
 			
 			coll.find(myquery).toArray(function(err,items){
 				if(err){
