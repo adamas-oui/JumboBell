@@ -528,7 +528,7 @@ file = 'account.html';
 				console.log("Connection err: " + err);
 			}
 			var dbo = db.db("tuftsdining");
-			var coll = dbo.collection("menu");			
+			var coll = dbo.collection("menu3");			
 
 			coll.find().toArray(function(err,items){
 				if(err){
