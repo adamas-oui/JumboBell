@@ -471,6 +471,8 @@ app.get('/account.html/process', function (req, res) {
 	
 	stringURL2 = stringURL2.split("=");
 	stringURL2 = stringURL2[1];
+	stringURL2 =  stringURL2.split(";");
+	stringURL2 = stringURL2[0];
 	stringURL2 = decodeURIComponent(stringURL2);
 	console.log(stringURL2 );
 	
