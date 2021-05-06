@@ -39,6 +39,7 @@ app.get('/process', function (req, res) {
 		stringURL = stringURL[1];
 		stringURL = stringURL.split(";");
 		stringURL = stringURL[0];
+		console.log("email input"+ stringURL);
 		MongoClient.connect(urll, { useUnifiedTopology: true }, function(err, db) {
 		console.log("hello");
 		  if(err) { return console.log("mongo err: " + err); }
