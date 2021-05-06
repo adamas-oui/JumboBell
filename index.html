@@ -14,7 +14,7 @@
 	      }  
     </style>
 	  <style>
-		  .signin {
+		  #signinform {
 			  text-align:center;
 			  position:relative;
 			  align-content:center;
@@ -52,16 +52,17 @@
   </nav>
   </div> 
 	
-<div class="signin">
-	<h1>Sign In</h1><br>
+
+	
 	<form id = "signinform" action = "https://jumbo-bell.herokuapp.com/index.html/process" method = "get" >
+	<h1>Sign In</h1><br>
 	  <p>Name: <input type="text" id = "fullname" name="fullname" /></p>
 	  <p>Email: <input type="text" id = "email" name="email" /></p>
 	<input type="submit" value="Sign In" >
 	<p>Please sign in with Gmail or enter your name and email. </p>
 	<div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"</div>
 	</form>
-</div>
+
 <a href="#" onclick="signOut();">Sign out</a>
 <script>
   function signOut() {
