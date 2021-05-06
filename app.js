@@ -438,9 +438,9 @@ file = 'account.html';
 					return;
 				} else {
 					var foodstr = "";
-					foodstr += ("<div class='bodytext' style='background-color:white; text-align:center;'>");
+					foodstr += ("<div class='bodytext' style='background-color:white; width:60%;'>");
 					foodstr += ("<h1 style = 'text-align:center; position:relative; background-color:white;'>My Favorites</h1>");
-					foodstr += ("<table style = color:black; align-content:center; position:relative; background-color:white; border:2px;>");
+					foodstr += ("<table style = 'color:black; align-content:center; position:relative; background-color:white; border:2px;'>");
 					foodstr += ("<tr> <th>Food</th> <th>Meal</th> <th>Dining Hall</th> <th>Date</th> </tr>");
 					var emailstring = "current users favorite foods: \n";
 					//go through entire database of foods
