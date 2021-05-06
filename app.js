@@ -371,12 +371,10 @@ app.get('/account.html',function(req,res) {
    });
 	
 	
-	 OGstring = req.url.toString();
-	if(OGstring.includes("foodname=") == false){
-		setTimeout(function(){res.end();}, 2000);
-		return;
-	}
-	 OGstring = decodeURIComponent ( (decodeURIComponent(OGstring) ) ) ;
+OGstring = req.url.toString();
+if(OGstring.includes("foodname=")){
+	
+OGstring = decodeURIComponent ( (decodeURIComponent(OGstring) ) ) ;
  
   var string1 = OGstring.split("foodname=")[1];
   useremail = string1.substring(0, string1.length - 1);
@@ -458,108 +456,13 @@ console.log(useremail);
     }
 
 
-	
+}	
 	
 	//end of code that uploads to user 
    setTimeout(function(){res.end();}, 2000);
 
 });
 	
-/*app.get('/my_choice.html/userprocess', function (req, res) {
-	res.writeHead(200, {'Content-Type':'text/html'});
-	
-	res.write("Hello");
-	
-	//const queryObject = url.parse(req.url,true).query;
-	
-  	res.write(req.url);
-	res.write(" SHOUld get actual thing: ")
-	var stringURL = req.url.toString()
-	res.write(stringURL );
-	
-	stringURL = stringURL.split("=");
-	stringURL = stringURL[1];
-	res.write(stringURL );
-	
-	 MongoClient.connect(userurl,{useUnifiedTopology:true},function(err, db ) {
-		 
-        currfood = stringURL;
-        useremail = "cpekowsky@gmail.com";
-
-            
-            
-            if (err) {
-                console.log("Connection err: " + err);
-            }
-            var dbo = db.db("users");
-            var coll = dbo.collection('profiles');
-            //var coll = dbo.collection("profile2");
-            
-            var myquery = { email: useremail };
-            
-            var newvalues = { $push: {foods: currfood } };
-            coll.updateOne(myquery, newvalues, function(err, res) {
-              if (err) throw err;
-              console.log("1 document updated");
-             // db.close();
-            });
-
-            
-    
-        
-
-            
-            
-            coll.find( ).toArray(function(err, items) {
-                
-                  if (err) {
-                      res.write("Error: " + err);  
-                  } 
-                  
-                  if( items.length == 0 ) {
-                      res.write("no users.");
-                  }
-                  
-                  else   {
-                      for (i=0; i<items.length; i++) {
-                          res.write("name:" + items[i].email );
-                          res.write( "<br>" );
-
-                      }
-                  }
-                  
-                  db.close();
-                  
-            })
-            
-            
-            
-
-           
-            
-            collection.insertOne(newData2, function(err, res) {
-            if(err) { console.log("query err: " + err); return; }
-            console.log("new document inserted");
-            }   );
-            
-            
-           
-
-
-
-
-            
-            setTimeout(function(){ db.close(); console.log("Success!");}, 1000);
-        })
-
-
-
-	
-	
-	
-	setTimeout(function(){res.end();}, 2000);
-
-}); */
 
 // code to get all of current users favorite foods being served 
 app.get('/account.html/process', function (req, res) {
