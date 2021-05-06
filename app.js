@@ -115,7 +115,7 @@ app.get('/menu.html/breakfast',function(req,res) {
 				return console.log("err");
 			}
 			var dbo = db.db("tuftsdining");
-			var coll = dbo.collection("menu3");
+			var coll = dbo.collection("menu");
 
 			  res.write("<form method='get' action='https://jumbo-bell.herokuapp.com/menu.html/process' >");
 			  
@@ -195,7 +195,7 @@ app.get('/menu.html/lunch',function (req,res) {
 				return console.log("err");
 			}
 			var dbo = db.db("tuftsdining");
-			var coll = dbo.collection("menu3");
+			var coll = dbo.collection("menu");
 
 			  res.write("<form method='get' action='https://jumbo-bell.herokuapp.com/menu.html/process' onsubmit = 'getFormData()'>");
 			  
@@ -273,7 +273,7 @@ app.get('/menu.html/dinner',function (req,res) {
 				return console.log("err");
 			}
 			var dbo = db.db("tuftsdining");
-			var coll = dbo.collection("menu3");
+			var coll = dbo.collection("menu");
 
 			  res.write("<form method='get' action='https://jumbo-bell.herokuapp.com/menu.html/process' onsubmit = 'getFormData()'>");
 			 
@@ -528,7 +528,7 @@ file = 'account.html';
 				console.log("Connection err: " + err);
 			}
 			var dbo = db.db("tuftsdining");
-			var coll = dbo.collection("menu3");			
+			var coll = dbo.collection("menu");			
 
 			coll.find().toArray(function(err,items){
 				if(err){
