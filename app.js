@@ -376,8 +376,6 @@ app.get('/account.html/process', function (req, res) {
 	
 	stringURL2 = stringURL2.split("=");
 	stringURL2 = stringURL2[1];
-	stringURL2 = stringURL2.split(";");
-	stringURL2 = stringURL2[0];
 	stringURL2 = decodeURIComponent(stringURL2);
 	console.log(stringURL2 );
 	
@@ -440,8 +438,8 @@ file = 'account.html';
 					return;
 				} else {
 					var foodstr = "";
-					foodstr += ("<h1>My Favorites</h1>");
-					foodstr += ("<table style = color:white;>");
+					foodstr += ("<h1 style = 'text-align:center; position:relative; background-color:white;'>My Favorites</h1>");
+					foodstr += ("<table style = color:black; align-content:center; position:relative; background-color:white; border:2px;>");
 					foodstr += ("<tr> <th>Food</th> <th>Meal</th> <th>Dining Hall</th> <th>Date</th> </tr>");
 					var emailstring = "current users favorite foods: \n";
 					//go through entire database of foods
