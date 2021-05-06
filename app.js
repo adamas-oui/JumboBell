@@ -377,7 +377,7 @@ OGstring = decodeURIComponent ( (decodeURIComponent(OGstring) ) ) ;
  
   var string1 = OGstring.split("foodname=")[1];
   var string1 = OGstring.split("foodname=")[1];
-  var string1 = string1.split(";")[0];
+  var useremail = string1.split(";")[0];
  useremail = decodeURIComponent(useremail);
 console.log(useremail);
   secondpart = OGstring.split("foodname=")[2];
