@@ -381,6 +381,58 @@ app.get('/my_choice.html/finduserfoods',function(req,res) {
 	
 	res.write(req.url);
      	setTimeout(function(){res.end();}, 2000);
+	string = req.url;
+	  string = OGstring.split("foodname=")[1];
+  useremail = string.substring(0, string.length - 1);
+  secondpart = OGstring.split("foodname=")[2];
+  
+ secondpart = secondpart.split("=");
+ secondpart.splice(0,1);
+ for(var i = 0; i < secondpart.length; i++ ) {
+     
+     
+     
+    secondpart[i] = secondpart[i].replace("&bfast", '');
+    secondpart[i] = secondpart[i].replace("&lunch", '');
+    secondpart[i] = secondpart[i].replace("&dinner", '');
+
+
+    secondpart[i] = secondpart[i].replace("&hidden", '');
+
+    while(secondpart[i].includes('+') ) {
+        secondpart[i] = secondpart[i].replace('+', ' ', 10000);
+    } 
+    
+    /*
+    if(secondpart[i].includes("AF") ) {
+        currstring = secondpart[i].split("AF")
+        secondpart.splice(i,i);
+        
+        for(var j = 0; j < currstring.length; j ++ ) {
+            secondpart.push("AF"+currstring[j]);
+        }
+
+    }
+    */
+
+     if(secondpart[i].includes(",") ) {
+         currstring = secondpart[i];
+         secondpart.splice(i,i);
+         
+         currstring = currstring[i].split(",");
+         for(var j = 0; j < currstring.length; j ++ ) {
+             secondpart.push(currstring[j]);
+         }
+
+     }
+ 
+ }
+
+ //secondpart = secondpart.shift();
+ 
+  console.log(secondpart);
+
+
 
 });
 	
