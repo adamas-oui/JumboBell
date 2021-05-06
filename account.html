@@ -62,7 +62,8 @@
 		<form method = "GET" action = "https://jumbo-bell.herokuapp.com/account.html/process" >
 		<input type = "text" id = "email" name = "foodname" style="display:none"/>
 		<input type = "submit" value = "View Favorites"/>
-	</form> 
+		<a href="#" onclick="signOut();">Sign out</a>
+		</form> 
 	      
 	      
 	      	  	      <script language = "javascript">
@@ -87,7 +88,7 @@
 			            
 		     </script>
  
-        <a href="#" onclick="signOut();" style='text-align:center'>Sign out</a>
+       
         <script>
           function signOut() {
             var auth2 = gapi.auth2.getAuthInstance();
