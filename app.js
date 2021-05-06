@@ -32,8 +32,8 @@ app.get('/index.html', function (req, res, next) {
     });
 });
 app.get('index.html/process', function (req, res, next) {
+	res.writeHead(200, {'Content-Type': 'text/html'});
 	console.log("Process the form");
-	pdata = "";
 		var stringURL = stringURL.split("=");
 		stringURL = stringURL[1];
 		stringURL = stringURL.split(";");
