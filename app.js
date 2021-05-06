@@ -136,7 +136,7 @@ app.get('/menu.html/breakfast',function(req,res) {
 					  var bfast = "";
 					  bfast += ("<div class='foodlist' style='width:30%;'>");
 					  bfast += ("<h1>Breakfast</h1>");
-					  bfast += ("<br><input type='submit' value='Add Selected Foods to Favorites'/><br><hr><br>");
+					  bfast += ("<br><input type='submit' value='Add Up to 5 Selected Foods to Favorites'/><br><hr><br>");
 					  for (i=0; i<items.length; i++) {
 						  //check if repeated value
 						  var repeatedvalue = false;
