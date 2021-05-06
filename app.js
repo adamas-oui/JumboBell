@@ -438,6 +438,7 @@ file = 'account.html';
 					return;
 				} else {
 					var foodstr = "";
+					foodstr += {"<div class='bodytext' style='background-color:white; text-align:center;'>");
 					foodstr += ("<h1 style = 'text-align:center; position:relative; background-color:white;'>My Favorites</h1>");
 					foodstr += ("<table style = color:black; align-content:center; position:relative; background-color:white; border:2px;>");
 					foodstr += ("<tr> <th>Food</th> <th>Meal</th> <th>Dining Hall</th> <th>Date</th> </tr>");
@@ -460,6 +461,8 @@ file = 'account.html';
 						
 					}
 					foodstr += ("</table>");
+					foodstr += ("</div>");
+					
 					res.write(foodstr);
 					sendmail(emailstring);
 				}
