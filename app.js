@@ -330,15 +330,14 @@ file='processchoices.html';
 		res.write(txt);
 		setTimeout(function(){res.end();}, 2000);
 		console.log("Process the form");
-		pdata = "";
+		var pdata = "";
 		req.on('data', data => {
 			pdata += data.toString();
 		});
 	});
-  
 	req.on('end', () => {
-	pdata = qs.parse(pdata);
-
+	var stringURL = pdata["email"];
+	stringURL = stringURL.split(";")[0];
 	var x = String(pdata['hidden']);
 	//calebs code to add foods the user chooses to their database 
 	//x is the string representing all the foods the user chose
@@ -364,7 +363,7 @@ file='processchoices.html';
                  if (err) throw err;
                  console.log("user: " + useremail + " updated");
                  });
-                
+  
         
             
             setTimeout(function(){ db.close(); console.log("Success!");}, 1000);
