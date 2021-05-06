@@ -322,7 +322,7 @@ app.get('/menu.html/dinner',function (req,res) {
 		
 	});
 });
-app.post('/menu.html/process', function (req, res) {
+app.get('/menu.html/process', function (req, res) {
 
 
 	file='processchoices.html';
