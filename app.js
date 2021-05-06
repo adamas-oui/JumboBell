@@ -261,7 +261,7 @@ app.get('/menu.html/dinner',function (req,res) {
 	      if(err) { return console.log(err); }
 	      res.writeHead(200, {'Content-Type': 'text/html'});
 		
-		var stringURL = req.url.toString();
+		var stringURL = String(req.url);
 	
 		stringURL = stringURL.split("=");
 		stringURL = stringURL[1];
