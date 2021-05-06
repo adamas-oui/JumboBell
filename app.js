@@ -370,9 +370,12 @@ app.get('/account.html',function(req,res) {
 		//display user database favorite foods data
    });
 	
-
+	
 	 OGstring = req.url.toString();
-
+	if(OGstring.includes("foodname=") == false){
+		setTimeout(function(){res.end();}, 2000);
+		return;
+	}
 	 OGstring = decodeURIComponent ( (decodeURIComponent(OGstring) ) ) ;
  
   var string1 = OGstring.split("foodname=")[1];
