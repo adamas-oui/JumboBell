@@ -380,8 +380,7 @@ app.get('/my_choice.html/finduserfoods',function(req,res) {
      	res.writeHead(200, {'Content-Type': 'text/html'});
 	
 	res.write(req.url);
-     	setTimeout(function(){res.end();}, 2000);
-	string = req.url.toString();;
+	string = req.url.toString();
 	  string = string.split("foodname=")[1];
   useremail = string.substring(0, string.length - 1);
 	res.write(useremail+"<br>");
@@ -403,18 +402,7 @@ app.get('/my_choice.html/finduserfoods',function(req,res) {
     while(secondpart[i].includes('+') ) {
         secondpart[i] = secondpart[i].replace('+', ' ', 10000);
     } 
-    
-    /*
-    if(secondpart[i].includes("AF") ) {
-        currstring = secondpart[i].split("AF")
-        secondpart.splice(i,i);
-        
-        for(var j = 0; j < currstring.length; j ++ ) {
-            secondpart.push("AF"+currstring[j]);
-        }
-
-    }
-    */
+  
 
      if(secondpart[i].includes(",") ) {
          currstring = secondpart[i];
@@ -434,6 +422,7 @@ app.get('/my_choice.html/finduserfoods',function(req,res) {
   console.log(secondpart);
   res.write(secondpart);
 
+   setTimeout(function(){res.end();}, 2000);
 
 });
 	
