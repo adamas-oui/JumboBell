@@ -372,7 +372,6 @@ app.get('/account.html',function(req,res) {
 	
 	
 OGstring = req.url.toString();
-if(OGstring.includes("foodname=")){
 	
 OGstring = decodeURIComponent ( (decodeURIComponent(OGstring) ) ) ;
  
@@ -454,9 +453,7 @@ console.log(useremail);
 
         
     }
-
-
-}	
+	
 	
 	//end of code that uploads to user 
    setTimeout(function(){res.end();}, 2000);
