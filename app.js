@@ -382,9 +382,10 @@ app.get('/my_choice.html/finduserfoods',function(req,res) {
 	res.write(req.url);
      	setTimeout(function(){res.end();}, 2000);
 	string = req.url;
-	  string = OGstring.split("foodname=")[1];
+	  string = string.split("foodname=")[1];
   useremail = string.substring(0, string.length - 1);
-  secondpart = OGstring.split("foodname=")[2];
+	res.write(useremail+"<br>");
+  secondpart = string.split("foodname=")[2];
   
  secondpart = secondpart.split("=");
  secondpart.splice(0,1);
@@ -431,7 +432,7 @@ app.get('/my_choice.html/finduserfoods',function(req,res) {
  //secondpart = secondpart.shift();
  
   console.log(secondpart);
-
+  res.write(secondpart);
 
 
 });
