@@ -68,8 +68,8 @@ app.get('/index.html/process', function (req, res, next) {
 			setTimeout(function(){db.close;}, 2000);
 		}); 
 });
-	if(email.length == 0){
-		res.redirect('/index.html');
+	if(Email.length == 0){
+		res.redirect('/');
 		return;
 	} else {
 		res.redirect('/home.html');
