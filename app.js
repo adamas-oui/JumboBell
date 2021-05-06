@@ -427,7 +427,8 @@ file = 'account.html';
 	req.on('end',() => {
 		pdata = qs.parse(pdata);
 		var stringURL = String(pdata['email']);
-		stringURL = stringURL.split(';')[0];
+		stringURL = String(stringURL.split(';')[0]);
+		console.log(stringURL);
 
 		//store user's favorite foods into array
 		var faves = [];
