@@ -445,7 +445,7 @@ file = 'account.html';
 			console.log("string URL: " + stringURL2);
 			var mailOptions = {
 			  from: 'cpekowsky@gmail.com',
-			  to: stringURL,
+			  to: stringURL2,
 			  subject: 'foods being served',
 			  text: sendstring
 			};
