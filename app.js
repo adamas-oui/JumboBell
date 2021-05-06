@@ -97,7 +97,7 @@ app.get('/menu.html/breakfast',function(req,res) {
 		stringURL = stringURL[1];
 		stringURL = stringURL.split(";");
 		stringURL = stringURL[0];
-		res.write("User email: " + stringURL );
+		//res.write("User email: " + stringURL );
 
 	      res.write(txt);	  
 	  
@@ -113,7 +113,7 @@ app.get('/menu.html/breakfast',function(req,res) {
 			  res.write("<br>");
 			  res.write("<br>");
 			  
-			  var emailform = "<input type = 'text' id = 'email' value = " + stringURL + "name = 'foodname'/> "
+			  var emailform = "<input type = 'text' style='display:none' id = 'email' value = " + stringURL + "name = 'foodname'/> "
 
 			  res.write(emailform);
 
@@ -291,15 +291,73 @@ app.get('/menu.html/dinner',function (req,res) {
 });
 app.post('/menu.html/process', function (req, res) {
 	
+	console.log(req.url);
+	console.log(" SHOUld get actual thing: ")
+	var stringURL2 = req.url.toString()
+	console.log(stringURL2 );
+	
+	stringURL2 = stringURL2.split("=");
+	stringURL2 = stringURL2[1];
+	console.log(stringURL2 );
+	var stringURL = decodeURIComponent(stringURL2)
+
+		//NEED TO FIX
+
 	file='processchoices.html';
 	fs.readFile(file,function(err,txt) {
 		if(err) {return console.log(err);}
 		res.writeHead(200, {'Content-Type':'text/html'});
 		res.write(txt);
 		setTimeout(function(){res.end();}, 2000);
+		console.log("Process the form");
+		pdata = "";
+		req.on('data', data => {
+			pdata += data.toString();
+		});
 	});
-});
   
+	req.on('end', () => {
+	pdata = qs.parse(pdata);
+
+	var x = String(pdata['hidden']);
+	//calebs code to add foods the user chooses to their database 
+	//x is the string representing all the foods the user chose
+	 uploaduserfood(x, stringURL);
+	 function uploaduserfood(foodstring, useremail) { 
+            
+        foodstring = foodstring.split(",")  
+        MongoClient.connect(userurl,{useUnifiedTopology:true},function(err, db ) {
+                        
+            
+            
+            if (err) {
+                console.log("Connection err: " + err);
+            }
+            var dbo = db.db("users");
+            var coll = dbo.collection('profiles');
+                            
+            console.log(foodstring);                        
+            var myquery = { email: "cpekowsky@gmail.com" };
+            var newvalues = {  $addToSet: { foods: { $each: foodstring } } };
+                
+            coll.updateOne(myquery, newvalues, function(err, res) {
+                 if (err) throw err;
+                 console.log("user: " + useremail + " updated");
+                 });
+                
+                
+        //    }
+            
+            
+            
+
+        
+            
+            setTimeout(function(){ db.close(); console.log("Success!");}, 1000);
+        })
+
+        
+    }
 
 		
 		
