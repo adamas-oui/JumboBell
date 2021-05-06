@@ -40,7 +40,7 @@ app.get('/index.html/process', function (req, res, next) {
   req.on('end', () => {
 	pdata = qs.parse(pdata);
 	var Email = pdata["email"];
-	
+	var name = pdata["fullname"];
 		MongoClient.connect(urll, { useUnifiedTopology: true }, function(err, db) {
 		console.log("hello");
 		  if(err) { return console.log("mongo err: " + err); }
@@ -53,7 +53,7 @@ app.get('/index.html/process', function (req, res, next) {
 						console.log("Error: '" + err+"'}");
 					  } 
 					  else if(items.length == 0){
-						  var newData = { "email": Email,"foods":[]};
+						  var newData = {"name":name,"email": Email,"foods":[]};
 						  collection.insertOne(newData, function(err, res){
 							  if(err) { 
 								  console.log("query err: " + err); 
