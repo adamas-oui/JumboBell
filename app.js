@@ -31,11 +31,11 @@ app.get('/index.html', function (req, res, next) {
       setTimeout(function(){res.end();}, 2000);
     });
 });
-app.get('index.html/process', function (req, res, next) {
+app.get('index.html/process', function (req, res) {
 	res.writeHead(200, {'Content-Type': 'text/html'});
 	console.log("Process the form");
 		var stringURL = res.url.toString();
-		vstringURL = stringURL.split("=");
+		stringURL = stringURL.split("=");
 		stringURL = stringURL[1];
 		stringURL = stringURL.split(";");
 		stringURL = stringURL[0];
@@ -65,8 +65,8 @@ app.get('index.html/process', function (req, res, next) {
 			setTimeout(function(){db.close;}, 2000);
 		}); 
 });
-	res.redirect('/home.html');
-	return;
+	//res.redirect('/home.html');
+	//return;
 
 });
 app.get('/home.html', function (req, res) {
