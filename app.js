@@ -675,15 +675,15 @@ file = 'account.html';
 		function sendmail(sendstring) {
 
 			var transporter = nodemailer.createTransport({
-			  service: 'gmail',
+			  service: 'outlook',
 			  auth: {
-				user: 'cpekowsky@gmail.com',
-				pass: 'stinkfart101'
+				user: 'calebhomework@outlook.com',
+				pass: 'Calebheroku1'
 			  }
 			});
 			console.log("string URL: " + stringURL2);
 			var mailOptions = {
-			  from: 'cpekowsky@gmail.com',
+			  from: 'calebhomework@outlook.com',
 			  to: stringURL2,
 			  subject: 'foods being served',
 			  text: sendstring
