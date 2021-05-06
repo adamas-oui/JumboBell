@@ -290,18 +290,7 @@ app.get('/menu.html/dinner',function (req,res) {
 	});
 });
 app.post('/menu.html/process', function (req, res) {
-	
-	console.log(req.url);
-	console.log(" SHOUld get actual thing: ")
-	var stringURL2 = req.url.toString()
-	console.log(stringURL2 );
-	
-	stringURL2 = stringURL2.split("=");
-	stringURL2 = stringURL2[1];
-	console.log(stringURL2 );
-	var stringURL = decodeURIComponent(stringURL2)
 
-		//NEED TO FIX
 
 	file='processchoices.html';
 	fs.readFile(file,function(err,txt) {
@@ -309,64 +298,10 @@ app.post('/menu.html/process', function (req, res) {
 		res.writeHead(200, {'Content-Type':'text/html'});
 		res.write(txt);
 		setTimeout(function(){res.end();}, 2000);
-		console.log("Process the form");
-		pdata = "";
-		req.on('data', data => {
-			pdata += data.toString();
-		});
 	});
-  
-	req.on('end', () => {
-	pdata = qs.parse(pdata);
-
-	var x = String(pdata['hidden']);
-	//calebs code to add foods the user chooses to their database 
-	//x is the string representing all the foods the user chose
-	 uploaduserfood(x, stringURL);
-	 function uploaduserfood(foodstring, useremail) { 
-            
-        foodstring = foodstring.split(",")  
-        MongoClient.connect(userurl,{useUnifiedTopology:true},function(err, db ) {
-                        
-            
-            
-            if (err) {
-                console.log("Connection err: " + err);
-            }
-            var dbo = db.db("users");
-            var coll = dbo.collection('profiles');
-                            
-            console.log(foodstring);                        
-            var myquery = { email: "cpekowsky@gmail.com" };
-            var newvalues = {  $addToSet: { foods: { $each: foodstring } } };
-                
-            coll.updateOne(myquery, newvalues, function(err, res) {
-                 if (err) throw err;
-                 console.log("user: " + useremail + " updated");
-                 });
-                
-                
-        //    }
-            
-            
-            
-
-        
-            
-            setTimeout(function(){ db.close(); console.log("Success!");}, 1000);
-        })
-
-        
-    }
-
-		
-		
-	//end calebs code to add foods the user chooses to their database
-	setTimeout(function(){res.end();}, 2000);
-
-	});  
-	
 });
+  
+            
 app.get('/about.html', function (req, res) {
   file = 'about.html';
   fs.readFile(file, function(err, txt) {
