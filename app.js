@@ -327,9 +327,7 @@ app.post('/menu.html/process', function (req, res) {
 	console.log(req.url);
 	console.log(" SHOUld get actual thing: ")
 	var stringURL2 = req.url.toString();
-	console.log(stringURL2 );
-	
-	stringURL2 = stringURL2.split("=");
+	stringURL2 = String(stringURL2).split("=");
 	stringURL2 = stringURL2[1];
 	stringURL2 = stringURL2.split(";");
 	stringURL2 = stringURL2[0];
